@@ -8,8 +8,19 @@ class FeaturedMovies extends React.Component {
   }
 
   render() {
+    const { featuredMovies } = this.props
     return (
-      <h1>Featured Movies Here</h1>
+      <div className="FeaturedMovies">
+        <h1>Featured New Releases</h1>
+        <ul>
+          {featuredMovies.map((m, idx) => (
+            <li key={idx}>
+              <img src={m.img} alt={m.title} />
+              {m.title}
+            </li>
+          ))}
+        </ul>
+      </div>
     )
   }
 }

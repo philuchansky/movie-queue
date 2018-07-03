@@ -12,7 +12,7 @@ module.exports = {
       $('#homeMovieCarousel li').each(function (i, el) {
         const movie = {
           title: $(this).text().trim().split('\n').shift().replace(/ *\([^)]*\) */g, ""),
-          img: $(this).find('img').attr('src').replace("//", "")
+          img: $(this).find('img').attr('src').replace("//", "http://")
         }
         featuredMovies.push(movie)
       })
