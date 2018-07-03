@@ -6,4 +6,7 @@ const
 moviesRouter.route('/')
   .get(moviesCtrl.index)
 
+moviesRouter.route('/:title')
+  .get(moviesCtrl.show)
+
 module.exports = moviesRouter

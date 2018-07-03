@@ -18,5 +18,12 @@ module.exports = {
       })
       res.json(featuredMovies)
     })
+  },
+
+  show: (req, res) => {
+    const apiUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${req.params.title}`
+    apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
+      res.json(data)
+    })
   }
 }
