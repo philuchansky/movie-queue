@@ -25,5 +25,12 @@ module.exports = {
     apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
       res.json(data)
     })
+  },
+
+  search: (req, res) => {
+    const apiUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.q}&type=movie`
+    apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
+      res.json(data)
+    })
   }
 }
