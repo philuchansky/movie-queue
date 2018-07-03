@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import FeaturedMovies from './components/FeaturedMovies'
 
 class App extends Component {
   render() {
@@ -9,9 +10,7 @@ class App extends Component {
           <Route path="/test" render={() => (
             <h1>test</h1>
           )} />
-          <Route path="/" render={() => (
-            <h1>Home</h1>
-          )} />
+          <Route path="/" component={FeaturedMovies} />
         </Switch>
       </div>
     );
