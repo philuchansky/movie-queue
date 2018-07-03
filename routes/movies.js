@@ -1,10 +1,9 @@
 const
   express = require('express'),
-  moviesRouter = new express.Router()
+  moviesRouter = new express.Router(),
+  moviesCtrl = require('../controllers/movies')
 
 moviesRouter.route('/')
-  .get((req, res) => {
-    res.json({ message: 'movies root.' })
-  })
+  .get(moviesCtrl.index)
 
 module.exports = moviesRouter
