@@ -6,7 +6,7 @@ const
 
 module.exports = {
   index: (req, res) => {
-    apiClient ({ method: 'get', url: 'https://www.fandango.com' }).then(({ data }) => {
+    apiClient({ method: 'get', url: 'https://www.fandango.com' }).then(({ data }) => {
       const $ = cheerio.load(data)
       const featuredMovies = []
       $('#homeMovieCarousel li').each(function (i, el) {

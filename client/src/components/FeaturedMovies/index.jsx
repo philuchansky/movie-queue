@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getFeaturedMovies } from '../../actions/movies'
+import MovieThumb from '../MovieThumb'
 
 class FeaturedMovies extends React.Component {
   componentDidMount() {
@@ -12,14 +13,11 @@ class FeaturedMovies extends React.Component {
     return (
       <div className="FeaturedMovies">
         <h1>Featured New Releases</h1>
-        <ul>
-          {featuredMovies.map((m, idx) => (
-            <li key={idx}>
-              <img src={m.img} alt={m.title} />
-              {m.title}
-            </li>
+        <div>
+          {featuredMovies.map((movie, idx) => (
+            <MovieThumb key={idx} movie={movie} />
           ))}
-        </ul>
+        </div>
       </div>
     )
   }
