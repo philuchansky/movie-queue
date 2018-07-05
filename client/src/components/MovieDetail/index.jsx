@@ -1,6 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { getMovie } from '../../actions/movies'
 
 class MovieDetail extends React.Component {
+  componentDidMount() {
+    const { getMovie, match: { params: { title } } } = this.props
+    getMovie(title)
+  }
+
   render() {
     return (
       <div className="MovieDetail">
@@ -10,4 +17,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-export default MovieDetail
+const mapStateToProps = ({ movieDetail }) => ({ movieDetail })
+export default connect(mapStateToProps, { getMovie })(MovieDetail)
