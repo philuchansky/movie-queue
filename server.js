@@ -4,11 +4,15 @@ const
   express = require('express'),
   app = express(),
   mongoose = require('mongoose'),
+  logger = require('morgan'),
   moviesRouter = require('./routes/movies.js')
 
 mongoose.connect(MONGODB_URI, (err) => {
   console.log(err || "Connected to MongoDB")
 })
+
+app.use(logger('dev'))
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.json({ message: "root" })
