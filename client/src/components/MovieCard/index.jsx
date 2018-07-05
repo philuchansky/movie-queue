@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieThumb = (props) => {
+const MovieCard = (props) => {
   const { movie } = props
   return (
-    <div className="MovieThumb card">
+    <div className="MovieCard card">
       <div className="card-image">
         <figure className="image">
           <Link to={`/movies/${movie.title}`}>
@@ -23,4 +23,4 @@ const MovieThumb = (props) => {
   )
 }
 
-export default MovieThumb
+export default MovieCard
