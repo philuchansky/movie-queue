@@ -9,7 +9,7 @@ import MovieDetail from './components/MovieDetail'
 class App extends Component {
   render() {
     return ( 
-      <div className="App">
+      <div className="App container">
         {/* <FontAwesomeIcon icon={faCoffee} /> */}
         <NavBar />
         <Switch>

@@ -14,9 +14,7 @@ const MovieCard = (props) => {
       </div>
       <div className="card-content">
         <div className="content">
-          <p className="title is-4">
-            <Link to={`/movies/${movie.title}`}>{movie.title}</Link>
-          </p>
+          <Link to={`/movies/${movie.title}`}>{movie.title}</Link>
         </div>
       </div>
     </div>
