@@ -3,6 +3,8 @@ const
   usersRouter = new express.Router(),
   usersCtrl = require('../controllers/users.js')
 
-usersRouter.get('/', usersCtrl.index)
+usersRouter.route('/')
+  .get(usersCtrl.index)
+  .post(usersCtrl.create)
 
 module.exports = usersRouter
