@@ -8,6 +8,7 @@ import thunk from 'redux-thunk'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import 'bulma/css/bulma.css'
 
 const store = createStore(
   rootReducer,
