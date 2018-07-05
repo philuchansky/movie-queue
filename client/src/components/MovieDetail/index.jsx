@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
+import MovieMeta from './MovieMeta'
 import './styles.css'
 
 class MovieDetail extends React.Component {
@@ -21,21 +22,11 @@ class MovieDetail extends React.Component {
           <div className="column is-two-thirds">
             <h1 className="title is-2">{movie.Title}</h1>
             <div className="movie-metadata">
-              <div class="is-size-6">
-                <span className="has-text-weight-bold">Year</span>: {movie.Year}
-              </div>
-              <div class="is-size-6">
-                <span className="has-text-weight-bold">Genre</span>: {movie.Genre}
-              </div>
-              <div class="is-size-6">
-                <span className="has-text-weight-bold">Director</span>: {movie.Director}
-              </div>
-              <div class="is-size-6">
-                <span className="has-text-weight-bold">Cast</span>: {movie.Actors}
-              </div>
-              <div class="is-size-6">
-                <span className="has-text-weight-bold">Production</span>: {movie.Production}
-              </div>
+              <MovieMeta label="Year" value={movie.Year} />
+              <MovieMeta label="Genre" value={movie.Genre} />
+              <MovieMeta label="Director" value={movie.Director} />
+              <MovieMeta label="Cast" value={movie.Actors} />
+              <MovieMeta label="Production" value={movie.Production} />
             </div>
             <h4 className="title is-4">Synopsis:</h4>
             <p>{movie.Plot}</p>
