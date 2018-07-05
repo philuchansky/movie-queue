@@ -12,7 +12,7 @@ class MovieDetail extends React.Component {
     const { movie } = this.props
     if(!movie) return <h1>Loading...</h1>
     return (
-      <div className="MovieDetail">
+      <div className="MovieDetail container">
         <h1>{movie.Title}</h1>
         <img src={movie.Poster} alt={movie.Title} />
         <ul>

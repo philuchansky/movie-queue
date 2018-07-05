@@ -9,16 +9,18 @@ import MovieDetail from './components/MovieDetail'
 class App extends Component {
   render() {
     return ( 
-      <div className="App container">
-        {/* <FontAwesomeIcon icon={faCoffee} /> */}
+      <div className="App">
         <NavBar />
-        <Switch>
-          <Route path="/test" render={() => (
-            <h1>test</h1>
-          )} />
-          <Route path="/movies/:title" component={MovieDetail} />
-          <Route path="/" component={FeaturedMovies} />
-        </Switch>
+        <div className="main section">
+          {/* <FontAwesomeIcon icon={faCoffee} /> */}
+          <Switch>
+            <Route path="/test" render={() => (
+              <h1>test</h1>
+            )} />
+            <Route path="/movies/:title" component={MovieDetail} />
+            <Route path="/" component={FeaturedMovies} />
+          </Switch>
+        </div>
       </div>
     );
   }
