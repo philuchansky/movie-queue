@@ -15,7 +15,7 @@ class FeaturedMovies extends React.Component {
       <div className="FeaturedMovies container">
         <h1>Featured New Releases</h1>
         <div>
-          {chunk(featuredMovies.slice(0, 12), 6).map((row, rowIdx) => (
+          {chunk(featuredMovies.slice(0, 10), 5).map((row, rowIdx) => (
             <div key={rowIdx} className="columns">
               {row.map((movie, colIdx) => (
                 <div key={colIdx} className="column">
