@@ -10,6 +10,9 @@ class App extends Component {
           <Route path="/test" render={() => (
             <h1>test</h1>
           )} />
+          <Route path="/movies/:title" render={() => (
+            <h1>Movie Details</h1>
+          )} />
           <Route path="/" component={FeaturedMovies} />
         </Switch>
       </div>
