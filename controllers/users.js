@@ -1,6 +1,6 @@
 const
   User = require('../models/User.js'),
-  auth = require('../auth.js')
+  { generateToken } = require('../auth.js')
 
 module.exports = {
   index: (req, res) => {
@@ -20,7 +20,7 @@ module.exports = {
       if(!user || !user.validPassword(req.body.password)) {
         res.json({ success: false, message: "invalid credentials" })
       } else {
-        const token = auth.generateToken(user)
+        const token = generateToken(user)
         res.json({ success: true, token })
       }
     })
