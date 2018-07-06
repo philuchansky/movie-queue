@@ -1,4 +1,4 @@
-import axios from 'axios'
+import httpClient from '../httpClient'
 import { GET_FEATURED_MOVIES, GET_MOVIE } from '../types/movies'
 
 const getFeaturedMoviesLoading = () => ({ type: GET_FEATURED_MOVIES.LOADING })
@@ -7,7 +7,7 @@ const getFeaturedMoviesSuccess = (movies) => ({ type: GET_FEATURED_MOVIES.SUCCES
 export function getFeaturedMovies() {
   return (dispatch) => {
     dispatch(getFeaturedMoviesLoading())
-    axios('/api/movies').then(({ data }) => {
+    httpClient.fetchFeaturedMovies().then(({ data }) => {
       dispatch(getFeaturedMoviesSuccess(data))
     })
   }
@@ -19,7 +19,7 @@ const getMovieSuccess = (movie) => ({ type: GET_MOVIE.SUCCESS, payload: movie })
 export function getMovie(title) {
   return (dispatch) => {
     dispatch(getMovieLoading())
-    axios(`/api/movies/${title}`).then(({ data }) => {
+    httpClient.fetchMovie(title).then(({ data }) => {
       dispatch(getMovieSuccess(data))
     })
   }
