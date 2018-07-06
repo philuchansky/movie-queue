@@ -7,4 +7,6 @@ usersRouter.route('/')
   .get(usersCtrl.index)
   .post(usersCtrl.create)
 
+usersRouter.post('/authenticate', usersCtrl.authenticate)
+
 module.exports = usersRouter

@@ -11,5 +11,9 @@ module.exports = {
       message: "user created",
       user
     }))
+  },
+
+  authenticate: (req, res) => {
+    res.json({ message: "authenticating..." })
   }
 }
