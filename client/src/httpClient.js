@@ -1,21 +1,24 @@
 import axios from 'axios'
 
-const httpClient = axios.create({
-  baseURL: '/api'
-})
+const httpClient = axios.create({ baseURL: '/api' })
 
-httpClient.authenticate = function(credentials) {
-  this({ method: 'post', url: '/users/authenticate', data: credentials }).then(({ data }) => {
-    console.log(data)
-  })
+httpClient.getToken = function() {
+  return localStorage.getItem('token')
 }
 
-httpClient.fetchFeaturedMovies = function() {
-  return this({ method: 'get', url: '/movies' })
+httpClient.setToken = function(token) {
+  localStorage.setItem('token', token)
+  httpClient.defaults.headers.common['token'] = token
+  return token
 }
 
-httpClient.fetchMovie = function(title) {
-  return this({ method: 'get', url: `/movies/${title}` })
+httpClient.clearToken = function() {
+  localStorage.removeItem('token')
+  delete httpClient.defaults.headers.common['token']
+  return true
 }
+
+const token = httpClient.getToken()
+if(token) httpClient.defaults.headers.common['token'] = token
 
 export default httpClient
