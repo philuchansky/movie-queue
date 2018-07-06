@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import LogIn from './components/LogIn'
 import FeaturedMovies from './components/FeaturedMovies'
 import MovieDetail from './components/MovieDetail'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,9 +15,7 @@ class App extends Component {
         <div className="main section">
           {/* <FontAwesomeIcon icon={faCoffee} /> */}
           <Switch>
-            <Route path="/test" render={() => (
-              <h1>test</h1>
-            )} />
+            <Route path="/login" component={LogIn} />
             <Route path="/movies/:title" component={MovieDetail} />
             <Route path="/" component={FeaturedMovies} />
           </Switch>
