@@ -1,0 +1,5 @@
+export const LOG_IN = {
+  LOADING: 'LOG_IN_LOADING',
+  SUCCESS: 'LOG_IN_SUCCESS',
+  ERROR: 'LOG_IN_ERROR'
+}
