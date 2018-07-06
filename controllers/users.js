@@ -29,6 +29,12 @@ module.exports = {
     })
   },
 
+  destroy: (req, res) => {
+    req.user.remove().then(() => {
+      res.json({ success: true, message: "user deleted" })
+    })
+  },
+
   authenticate: (req, res) => {
     User.findOne({ email: req.body.email }).exec().then(user => {
       if(!user || !user.validPassword(req.body.password)) {
