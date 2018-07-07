@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers'
 import thunk from 'redux-thunk'
+import httpClient from './httpClient'
+import { getCurrentUser } from './actions/auth'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
@@ -16,6 +18,8 @@ const store = createStore(
     thunk
   ))
 )
+
+if(httpClient.getToken()) store.dispatch(getCurrentUser())
 
 ReactDOM.render(
   <Provider store={store}>

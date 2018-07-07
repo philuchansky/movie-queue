@@ -18,3 +18,12 @@ export function logIn(credentials) {
       })
   }
 }
+
+export function getCurrentUser() {
+  return (dispatch) => {
+    dispatch(logInLoading())
+    return httpClient({ method: 'get', url: '/users/me' }).then(({ data }) => {
+      dispatch(logInSuccess(data))
+    })
+  }
+}
