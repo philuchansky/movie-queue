@@ -1,4 +1,4 @@
-import { LOG_IN } from '../actions/auth'
+import { LOG_IN } from '../types/auth'
 
 export default (state = null, action) => {
   switch(action.type) {

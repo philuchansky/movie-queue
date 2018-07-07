@@ -1,5 +1,5 @@
 import httpClient from '../httpClient'
-import { LOG_IN } from '../types/users'
+import { LOG_IN } from '../types/auth'
 
 const logInLoading = () => ({ type: LOG_IN.LOADING })
 const logInError = (message) => ({ type: LOG_IN.ERROR, payload: message })
