@@ -41,7 +41,7 @@ module.exports = {
         res.json({ success: false, message: "invalid credentials" })
       } else {
         const token = generateToken(user)
-        res.json({ success: true, message: "token attached", token })
+        res.json({ success: true, message: "token attached", user, token })
       }
     })
   }
