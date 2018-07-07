@@ -5,9 +5,7 @@ const
 
 module.exports = {
   generateToken: (user) => {
-    const userData = user.toObject()
-    delete userData.password
-    return jwt.sign(userData, JWT_SECRET)
+    return jwt.sign({ _id: user._id }, JWT_SECRET)
   },
 
   verifyToken: (req, res, next) => {
