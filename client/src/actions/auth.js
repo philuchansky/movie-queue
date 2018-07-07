@@ -7,15 +7,16 @@ const logInSuccess = (user) => ({ type: LOG_IN.SUCCESS, payload: user })
 export function logIn(credentials) {
   return (dispatch) => {
     dispatch(logInLoading())
-    httpClient({ method: 'post', url: '/users/authenticate', data: credentials })
-      .then(({ data: { success, message, token, user } }) => {
-        if(success) {
+    return httpClient({ method: 'post', url: '/users/authenticate', data: credentials })
+      .then(({ data: { token, user } }) => {
           httpClient.setToken(token)
           dispatch(logInSuccess(user))
-        } else {
-          dispatch(logInError(message))
-        }
+          return user
       })
+      .catch((error) => {
+          dispatch(logInError(error.response.data.message))
+          return false
+      }) 
   }
 }
 

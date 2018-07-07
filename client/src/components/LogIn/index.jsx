@@ -7,7 +7,10 @@ import Form from './Form'
 class LogIn extends React.Component {
 
   onFormSubmit(credentials) {
-    this.props.logIn(credentials)
+    const { logIn, history } = this.props
+    logIn(credentials).then(user => {
+      if(user) return history.push('/')
+    })
   }
 
   render() {

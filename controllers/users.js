@@ -38,7 +38,7 @@ module.exports = {
   authenticate: (req, res) => {
     User.findOne({ email: req.body.email }).exec().then(user => {
       if(!user || !user.validPassword(req.body.password)) {
-        res.json({ success: false, message: "invalid credentials" })
+        res.status(401).json({ success: false, message: "invalid credentials" })
       } else {
         const token = generateToken(user)
         res.json({ success: true, message: "token attached", user, token })
