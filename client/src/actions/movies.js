@@ -7,7 +7,7 @@ const getFeaturedMoviesSuccess = (movies) => ({ type: GET_FEATURED_MOVIES.SUCCES
 export function getFeaturedMovies() {
   return (dispatch) => {
     dispatch(getFeaturedMoviesLoading())
-    httpClient.fetchFeaturedMovies().then(({ data }) => {
+    httpClient({ method: 'get', url: '/movies' }).then(({ data }) => {
       dispatch(getFeaturedMoviesSuccess(data))
     })
   }
@@ -19,7 +19,7 @@ const getMovieSuccess = (movie) => ({ type: GET_MOVIE.SUCCESS, payload: movie })
 export function getMovie(title) {
   return (dispatch) => {
     dispatch(getMovieLoading())
-    httpClient.fetchMovie(title).then(({ data }) => {
+    httpClient({ method: 'get', url: `/movies/${title}` }).then(({ data }) => {
       dispatch(getMovieSuccess(data))
     })
   }
