@@ -4,8 +4,6 @@ import NavBar from './components/NavBar'
 import LogIn from './components/LogIn'
 import FeaturedMovies from './components/FeaturedMovies'
 import MovieDetail from './components/MovieDetail'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
   render() {
@@ -13,7 +11,6 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <div className="main section">
-          {/* <FontAwesomeIcon icon={faCoffee} /> */}
           <div className="container">
             <Switch>
               <Route path="/login" component={LogIn} />
