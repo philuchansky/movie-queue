@@ -14,11 +14,13 @@ class App extends Component {
         <NavBar />
         <div className="main section">
           {/* <FontAwesomeIcon icon={faCoffee} /> */}
-          <Switch>
-            <Route path="/login" component={LogIn} />
-            <Route path="/movies/:title" component={MovieDetail} />
-            <Route path="/" component={FeaturedMovies} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route path="/login" component={LogIn} />
+              <Route path="/movies/:title" component={MovieDetail} />
+              <Route path="/" component={FeaturedMovies} />
+            </Switch>
+          </div>
         </div>
       </div>
     );

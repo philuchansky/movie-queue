@@ -12,7 +12,7 @@ class FeaturedMovies extends React.Component {
   render() {
     const { featuredMovies } = this.props
     return (
-      <div className="FeaturedMovies container">
+      <div className="FeaturedMovies">
         <h1>Featured New Releases</h1>
         <div>
           {chunk(featuredMovies.slice(0, 10), 5).map((row, rowIdx) => (
