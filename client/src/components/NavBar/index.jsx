@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import './NavBar.css'
 
 class NavBar extends React.Component {
 
@@ -12,9 +15,11 @@ class NavBar extends React.Component {
   render() {
     const { active } = this.state
     return (
-      <nav className="navbar" aria-label="main navigation">
+      <nav className="NavBar navbar is-warning" aria-label="main navigation">
         <div className="navbar-brand">
-          <Link className="navbar-item" to="/">Movie Queue</Link>
+          <Link className="logo navbar-item" to="/">
+            <FontAwesomeIcon icon={faFilm} /> Queue
+          </Link>
           <a onClick={this.toggleActive.bind(this)} role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>

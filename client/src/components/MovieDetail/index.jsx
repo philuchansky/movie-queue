@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
 import MovieMeta from './MovieMeta'
-import './styles.css'
+import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
   componentDidMount() {

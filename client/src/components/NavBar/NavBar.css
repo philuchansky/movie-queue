@@ -1,0 +1,9 @@
+.NavBar .logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.NavBar .logo svg {
+  margin-right: 10px;
+}
