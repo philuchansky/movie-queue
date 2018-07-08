@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../NavBar'
+import SearchBar from '../SearchBar'
 
 const Hero = (props) => {
   return (
@@ -11,11 +12,15 @@ const Hero = (props) => {
       <div className="hero-body">
         <div className="container has-text-centered">
           <h1 className="title">
+            Lorem Ipsum Dolor
+          </h1>
+          <SearchBar />
+          {/* <h1 className="title">
             Title
           </h1>
           <h2 className="subtitle">
             Subtitle
-          </h2>
+          </h2> */}
         </div>
       </div>
 
