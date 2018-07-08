@@ -10,8 +10,10 @@ class App extends Component {
   render() {
     return ( 
       <div className="App">
-        <NavBar />
-        <Hero />
+        <Switch>
+          <Route exact path="/" component={Hero} />
+          <Route path="/" component={NavBar} />
+        </Switch>
         <div className="main section">
           <div className="container">
             <Switch>
