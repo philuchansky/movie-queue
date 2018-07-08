@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Hero from './components/Hero'
 import NavBar from './components/NavBar'
 import LogIn from './components/LogIn'
 import FeaturedMovies from './components/FeaturedMovies'
@@ -10,6 +11,7 @@ class App extends Component {
     return ( 
       <div className="App">
         <NavBar />
+        <Hero />
         <div className="main section">
           <div className="container">
             <Switch>
