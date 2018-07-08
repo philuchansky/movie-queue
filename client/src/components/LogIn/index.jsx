@@ -16,8 +16,12 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className="LogIn">
-        <h1 className="title">Log In</h1>
-        <Form onSubmit={this.onFormSubmit.bind(this)} />
+        <div className="columns is-tablet is-centered">
+          <div className="column is-half is-narrow">
+            <h1 className="title">Log In</h1>
+            <Form onSubmit={this.onFormSubmit.bind(this)} />
+          </div>
+        </div>
       </div>
     )
   }

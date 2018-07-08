@@ -28,7 +28,7 @@ const Form = (props) => {
       </div>
       <div className="field">
         <div className="control">
-          <button className="button is-warning">Log In</button>
+          <button className="button is-warning has-text-weight-bold">Log In</button>
         </div>
       </div>
     </form>
