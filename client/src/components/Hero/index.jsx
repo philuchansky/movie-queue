@@ -3,7 +3,7 @@ import NavBar from '../NavBar'
 
 const Hero = (props) => {
   return (
-    <section class="hero is-warning is-medium">
+    <section className="hero is-warning is-medium">
       <div className="hero-head">
         <NavBar />
       </div>
