@@ -14,7 +14,9 @@ const MovieCard = (props) => {
       </div>
       <div className="card-content">
         <div className="content">
-          <Link to={`/movies/${movie.title}`}>{movie.title}</Link>
+          <Link to={`/movies/${movie.title}`} className="has-text-grey-dark">
+            {movie.title}
+          </Link>
         </div>
       </div>
     </div>
