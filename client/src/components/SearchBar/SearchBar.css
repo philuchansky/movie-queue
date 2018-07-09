@@ -1,3 +1,9 @@
 .SearchBar {
   display: inline-block;
 }
+
+.SearchBar .Results {
+  position: absolute;
+  background: #FFF;
+  z-index: 1;
+}
