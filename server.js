@@ -8,7 +8,7 @@ const
   moviesRouter = require('./routes/movies.js'),
   usersRouter = require('./routes/users.js')
 
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true }, (err) => {
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
   console.log(err || "Connected to MongoDB")
 })
 
