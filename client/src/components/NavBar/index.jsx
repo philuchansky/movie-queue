@@ -21,7 +21,10 @@ class NavBar extends React.Component {
             <Link className="logo navbar-item" to="/">
               <FontAwesomeIcon icon={faFilm} /> Queue
             </Link>
-            <a onClick={this.toggleActive.bind(this)} role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+            <a role="button" aria-label="menu" aria-expanded="false"
+              onClick={this.toggleActive.bind(this)}
+              className={`navbar-burger ${active ? 'is-active' : '' }`}
+            >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
