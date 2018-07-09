@@ -10,14 +10,14 @@ const MovieCard = (props) => {
     <div className="MovieCard card">
       <div className="card-image">
         <figure className="image">
-          <Link to={`/movies/${movie.title}`}>
+          <Link to={`/movies/${movie.id}`}>
             <img src={baseImgUrl + movie.poster_path} alt={movie.title} />
           </Link>
         </figure>
       </div>
       <div className="card-content">
         <div className="content">
-          <Link to={`/movies/${movie.title}`} className="has-text-grey-dark">
+          <Link to={`/movies/${movie.id}`} className="has-text-grey-dark">
             {movie.title}
           </Link>
         </div>

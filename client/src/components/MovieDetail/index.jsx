@@ -4,10 +4,16 @@ import { getMovie } from '../../actions/movies'
 import MovieMeta from './MovieMeta'
 import './MovieDetail.css'
 
+const baseImgUrl = 'https://image.tmdb.org/t/p/w780/'
+
 class MovieDetail extends React.Component {
   componentDidMount() {
-    const { getMovie, match: { params: { title } } } = this.props
-    getMovie(title)
+    const { getMovie, match: { params: { id } } } = this.props
+    getMovie(id)
+  }
+
+  formatGenres(genres) {
+    return this.props.movie.genres.map((g) => ' ' + g.name).join().slice(1)
   }
 
   render() {
@@ -17,19 +23,17 @@ class MovieDetail extends React.Component {
       <div className="MovieDetail">
         <div className="columns">
           <div className="column is-one-third">
-            <img src={movie.Poster} alt={movie.Title} />
+            <img src={baseImgUrl + movie.poster_path} alt={movie.title} />
           </div>
           <div className="column is-two-thirds">
-            <h1 className="title is-2">{movie.Title}</h1>
+            <h1 className="title is-2">{movie.title}</h1>
+            <h1 className="title is-3">{movie.tagline}</h1>
             <div className="movie-metadata">
-              <MovieMeta label="Year" value={movie.Year} />
-              <MovieMeta label="Genre" value={movie.Genre} />
-              <MovieMeta label="Director" value={movie.Director} />
-              <MovieMeta label="Cast" value={movie.Actors} />
-              <MovieMeta label="Production" value={movie.Production} />
+              <MovieMeta label="Release Data" value={movie.release_date} />
+              <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
             </div>
             <h4 className="title is-4">Synopsis:</h4>
-            <p>{movie.Plot}</p>
+            <p>{movie.overview}</p>
           </div>
         </div>
       </div>

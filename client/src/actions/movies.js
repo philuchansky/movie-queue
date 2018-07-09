@@ -16,10 +16,10 @@ export function getFeaturedMovies() {
 const getMovieLoading = () => ({ type: GET_MOVIE.LOADING })
 // const getMovieError = () => ({ type: GET_MOVIE.ERROR })
 const getMovieSuccess = (movie) => ({ type: GET_MOVIE.SUCCESS, payload: movie })
-export function getMovie(title) {
+export function getMovie(id) {
   return (dispatch) => {
     dispatch(getMovieLoading())
-    httpClient({ method: 'get', url: `/movies/${title}` }).then(({ data }) => {
+    httpClient({ method: 'get', url: `/movies/${id}` }).then(({ data }) => {
       dispatch(getMovieSuccess(data))
     })
   }

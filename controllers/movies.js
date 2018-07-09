@@ -12,10 +12,9 @@ module.exports = {
   },
 
   show: (req, res) => {
-    const apiUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${req.params.title}`
-    apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
-      res.json(data)
-    })
+    apiClient.get(`/movie/${req.params.id}?api_key=${TMDB_API_KEY}`)
+    .then(({ data }) => res.json(data))
+    .catch(({ response: { data } }) => res.json(data))
   },
 
   search: (req, res) => {

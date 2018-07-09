@@ -9,7 +9,7 @@ moviesRouter.route('/')
 moviesRouter.route('/search')
   .get(moviesCtrl.search)
   
-moviesRouter.route('/:title')
+moviesRouter.route('/:id')
   .get(moviesCtrl.show)
 
 
