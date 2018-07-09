@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { searchMovies } from '../../actions/movies'
 import Form from './Form'
+import Results from './Results'
 import './SearchBar.css'
 
 class SearchBar extends React.Component {
@@ -11,7 +12,7 @@ class SearchBar extends React.Component {
   }
 
   onFormChange({ term }) {
-    if(term.length > 3) this.props.searchMovies(term)
+    if(term && term.length > 3) this.props.searchMovies(term)
   }
 
   render() {
@@ -19,6 +20,7 @@ class SearchBar extends React.Component {
     return (
       <div className="SearchBar">
         <Form onSubmit={this.onFormSubmit.bind(this)} onChange={this.onFormChange.bind(this)} />
+        <Results items={searchResults} />
       </div>
     )
   }
