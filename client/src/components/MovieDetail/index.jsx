@@ -4,7 +4,7 @@ import { getMovie } from '../../actions/movies'
 import MovieMeta from './MovieMeta'
 import './MovieDetail.css'
 
-const baseImgUrl = 'https://image.tmdb.org/t/p/w780/'
+const baseImgUrl = 'https://image.tmdb.org/t/p/w780'
 
 class MovieDetail extends React.Component {
   componentDidMount() {
@@ -29,7 +29,7 @@ class MovieDetail extends React.Component {
             <h1 className="title is-2">{movie.title}</h1>
             <h1 className="title is-3">{movie.tagline}</h1>
             <div className="movie-metadata">
-              <MovieMeta label="Release Data" value={movie.release_date} />
+              <MovieMeta label="Release Date" value={movie.release_date} />
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
             </div>
             <h4 className="title is-4">Synopsis:</h4>

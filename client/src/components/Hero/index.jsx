@@ -11,7 +11,7 @@ const Hero = (props) => {
       <div className="hero-body">
         <div className="container has-text-centered">
           <h1 className="title">
-            Lorem Ipsum Dolor
+            Start Building Your Queue
           </h1>
           <SearchBar />
         </div>

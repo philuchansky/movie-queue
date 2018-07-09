@@ -1,7 +1,7 @@
 const
-  { OMDB_API_KEY, TMDB_API_KEY, TMDB_ACCESS_TOKEN } = process.env,
-  cheerio = require('cheerio'),
+  { TMDB_API_KEY } = process.env,
   axios = require('axios'),
+  _ = require('lodash')
   apiClient = axios.create({ baseURL: 'https://api.themoviedb.org/3' })
 
 module.exports = {
@@ -18,12 +18,12 @@ module.exports = {
   },
 
   search: (req, res) => {
-    const apiUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.q}&type=movie`
-    apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
-      res.json({
-        total: data.totalResults,
-        results: data.Search
-      })
+    apiClient.get(`/search/movie?api_key=${TMDB_API_KEY}&query=${req.query.term}`)
+    .then(({ data }) => {
+      const pathsToInclude = ['id', 'title', 'poster_path']
+      const formattedResults = data.results.map(r => _.pick(r, pathsToInclude))
+      res.json(formattedResults)
     })
+    .catch(({ response: { data } }) => res.json(data))
   }
 }

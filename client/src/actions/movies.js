@@ -31,8 +31,8 @@ const searchMoviesSuccess = (results) => ({ type: SEARCH_MOVIES.SUCCESS, payload
 export function searchMovies(term) {
   return (dispatch) => {
     dispatch(searchMoviesLoading())
-    httpClient({ method: 'get', url: `/movies/search?q=${term}` }).then(({ data }) => {
-      dispatch(searchMoviesSuccess(data.results))
+    httpClient({ method: 'get', url: `/movies/search?term=${term}` }).then(({ data }) => {
+      dispatch(searchMoviesSuccess(data))
       console.log(data)
     })
   }
