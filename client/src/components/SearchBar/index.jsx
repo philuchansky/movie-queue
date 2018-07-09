@@ -10,13 +10,19 @@ class SearchBar extends React.Component {
     this.props.searchMovies(term)
   }
 
+  onFormChange({ term }) {
+    if(term.length > 3) this.props.searchMovies(term)
+  }
+
   render() {
+    const { searchResults } = this.props
     return (
       <div className="SearchBar">
-        <Form onSubmit={this.onFormSubmit.bind(this)} />
+        <Form onSubmit={this.onFormSubmit.bind(this)} onChange={this.onFormChange.bind(this)} />
       </div>
     )
   }
 }
 
-export default connect(null, { searchMovies })(SearchBar)
+const mapStateToProps = ({ searchResults }) => ({ searchResults })
+export default connect(mapStateToProps, { searchMovies })(SearchBar)
