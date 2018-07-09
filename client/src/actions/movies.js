@@ -27,11 +27,12 @@ export function getMovie(title) {
 
 const searchMoviesLoading = () => ({ type: SEARCH_MOVIES.LOADING })
 // const searchMoviesError = () => ({ type: SEARCH_MOVIES.ERROR })
-// const searchMoviesSuccess = (results) => ({ type: SEARCH_MOVIES.SUCCESS, payload: results })
+const searchMoviesSuccess = (results) => ({ type: SEARCH_MOVIES.SUCCESS, payload: results })
 export function searchMovies(term) {
   return (dispatch) => {
     dispatch(searchMoviesLoading())
     httpClient({ method: 'get', url: `/movies/search?q=${term}` }).then(({ data }) => {
+      dispatch(searchMoviesSuccess(data.results))
       console.log(data)
     })
   }

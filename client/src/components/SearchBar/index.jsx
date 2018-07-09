@@ -1,11 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { searchMovies } from '../../actions/movies'
 import Form from './Form'
 import './SearchBar.css'
 
 class SearchBar extends React.Component {
 
   onFormSubmit({ term }) {
-    console.log(term)
+    this.props.searchMovies(term)
   }
 
   render() {
@@ -17,4 +19,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar
+export default connect(null, { searchMovies })(SearchBar)

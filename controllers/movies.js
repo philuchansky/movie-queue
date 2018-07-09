@@ -30,7 +30,10 @@ module.exports = {
   search: (req, res) => {
     const apiUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${req.query.q}&type=movie`
     apiClient({ method: 'get', url: apiUrl}).then(({ data }) => {
-      res.json(data)
+      res.json({
+        total: data.totalResults,
+        results: data.Search
+      })
     })
   }
 }
