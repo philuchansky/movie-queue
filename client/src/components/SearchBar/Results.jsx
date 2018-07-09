@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Results = (props) => {
   const { items } = props
@@ -6,12 +7,12 @@ const Results = (props) => {
   return (
     <nav className="panel">
       {items.slice(0, 5).map(item => (
-        <a key={item.imdbID} className="panel-block">
+        <Link key={item.imdbID} to={`/movies/${item.Title}`} className="panel-block">
           <span className="panel-icon">
             <i className="fas fa-book" aria-hidden="true"></i>
           </span>
           {item.Title}
-        </a>
+        </Link>
       ))}
     </nav>
   )
