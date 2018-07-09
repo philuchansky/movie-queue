@@ -1,20 +1,17 @@
 import React from 'react'
+import Form from './Form'
 import './SearchBar.css'
 
 class SearchBar extends React.Component {
+
+  onFormSubmit({ term }) {
+    console.log(term)
+  }
+
   render() {
     return (
       <div className="SearchBar">
-        <div className="field has-addons">
-          <div className="control">
-            <input className="input" type="text" placeholder="Mission Impossible" />
-          </div>
-          <div className="control">
-            <button className="button is-info">
-              Search
-            </button>
-          </div>
-        </div>
+        <Form onSubmit={this.onFormSubmit.bind(this)} />
       </div>
     )
   }
