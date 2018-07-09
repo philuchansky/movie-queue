@@ -1,5 +1,5 @@
 import httpClient from '../httpClient'
-import { GET_FEATURED_MOVIES, GET_MOVIE, SEARCH_MOVIES } from '../types/movies'
+import { GET_FEATURED_MOVIES, GET_MOVIE, SEARCH_MOVIES, CLEAR_SEARCH_RESULTS } from '../types/movies'
 
 const getFeaturedMoviesLoading = () => ({ type: GET_FEATURED_MOVIES.LOADING })
 // const getFeaturedMoviesError = () => ({ type: GET_FEATURED_MOVIES.ERROR })
@@ -37,3 +37,5 @@ export function searchMovies(term) {
     })
   }
 }
+
+export const clearSearchResults = () => ({ type: CLEAR_SEARCH_RESULTS })

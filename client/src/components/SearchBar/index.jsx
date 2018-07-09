@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { searchMovies } from '../../actions/movies'
+import { searchMovies, clearSearchResults } from '../../actions/movies'
 import Form from './Form'
 import Results from './Results'
 import './SearchBar.css'
@@ -12,7 +12,11 @@ class SearchBar extends React.Component {
   }
 
   onFormChange({ term }) {
-    if(term && term.length > 3) this.props.searchMovies(term)
+    if(term && term.length > 3) {
+      this.props.searchMovies(term)
+    } else {
+      this.props.clearSearchResults()
+    }
   }
 
   render() {
@@ -27,4 +31,4 @@ class SearchBar extends React.Component {
 }
 
 const mapStateToProps = ({ searchResults }) => ({ searchResults })
-export default connect(mapStateToProps, { searchMovies })(SearchBar)
+export default connect(mapStateToProps, { searchMovies, clearSearchResults })(SearchBar)
