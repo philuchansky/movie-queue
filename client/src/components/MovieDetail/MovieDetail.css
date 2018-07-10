@@ -1,8 +1,10 @@
-.MovieDetail .external-link-icon {
-  font-size: 40px;
+.MovieDetail .external-links a {
+  font-size: 32px;
+  margin-right: 10px;
+  color: #444;
 }
 
-.imdb {
+.external-links a.imdb {
   color: #f3ce13;
 }
 
