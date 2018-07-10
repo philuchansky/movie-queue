@@ -6,7 +6,8 @@ const
   mongoose = require('mongoose'),
   logger = require('morgan'),
   moviesRouter = require('./routes/movies.js'),
-  usersRouter = require('./routes/users.js')
+  usersRouter = require('./routes/users.js'),
+  queueRouter = require('./routes/queue.js')
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
   console.log(err || "Connected to MongoDB")
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/movies', moviesRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/queue', queueRouter)
 
 app.listen(PORT, (err) => {
   console.log(err || `Server running on port ${PORT}`)
