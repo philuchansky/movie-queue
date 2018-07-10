@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
 import { posterUrl } from '../../helpers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImdb } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 import MovieMeta from './MovieMeta'
 import './MovieDetail.css'
 
@@ -32,7 +35,11 @@ class MovieDetail extends React.Component {
             <div className="movie-metadata">
               <MovieMeta label="Release Date" value={movie.release_date} />
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
+              <Link to="#" className="external-link-icon imdb">
+                <FontAwesomeIcon icon={faImdb} />
+              </Link>
             </div>
+            
             <h4 className="title is-4">Synopsis:</h4>
             <p>{movie.overview}</p>
           </div>

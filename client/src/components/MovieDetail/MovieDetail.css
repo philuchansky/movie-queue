@@ -1,3 +1,11 @@
+.MovieDetail .external-link-icon {
+  font-size: 40px;
+}
+
+.imdb {
+  color: #f3ce13;
+}
+
 .MovieDetail .movie-metadata {
   margin-bottom: 3rem;
 }
