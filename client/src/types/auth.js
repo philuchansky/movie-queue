@@ -3,3 +3,7 @@ export const LOG_IN = {
   SUCCESS: 'LOG_IN_SUCCESS',
   ERROR: 'LOG_IN_ERROR'
 }
+
+export const LOG_OUT = {
+  SUCCESS: 'LOG_OUT_SUCCESS'
+}

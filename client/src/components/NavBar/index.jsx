@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
+import { logOut } from '../../actions/auth'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,11 @@ class NavBar extends React.Component {
 
   toggleActive() {
     this.setState({ active: !this.state.active })
+  }
+
+  handleLogOutClick() {
+    const { logOut, history } = this.props
+    logOut().then(() => history.push('/'))
   }
 
   render() {
@@ -39,6 +45,7 @@ class NavBar extends React.Component {
                 ? (
                   <Fragment>
                     <Link to="/queue" className="navbar-item">My Queue</Link>
+                    <a onClick={this.handleLogOutClick.bind(this)} className="navbar-item">Log Out</a>
                   </Fragment>
                 )
                 : (
@@ -56,4 +63,4 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = ({ currentUser }) => ({ currentUser })
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, { logOut })(NavBar)

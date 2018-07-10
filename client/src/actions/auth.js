@@ -1,5 +1,5 @@
 import httpClient from '../httpClient'
-import { LOG_IN } from '../types/auth'
+import { LOG_IN, LOG_OUT } from '../types/auth'
 
 const logInLoading = () => ({ type: LOG_IN.LOADING })
 const logInError = (message) => ({ type: LOG_IN.ERROR, payload: message })
@@ -17,6 +17,17 @@ export function logIn(credentials) {
           dispatch(logInError(error.response.data.message))
           return false
       }) 
+  }
+}
+
+const logOutSuccess = () => ({ type: LOG_OUT.SUCCESS })
+export function logOut() {
+  return (dispatch) => {
+    return new Promise((resolve, reject) => {
+      if(!httpClient.clearToken()) return reject()
+      dispatch(logOutSuccess())
+      resolve(true)
+    })
   }
 }
 
