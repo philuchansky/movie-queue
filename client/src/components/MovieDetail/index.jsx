@@ -4,11 +4,8 @@ import { getMovie } from '../../actions/movies'
 import { posterUrl, formattedDate } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
-import { Link } from 'react-router-dom'
 import MovieMeta from './MovieMeta'
 import './MovieDetail.css'
-
-const baseImgUrl = 'https://image.tmdb.org/t/p/w780'
 
 class MovieDetail extends React.Component {
   componentDidMount() {
@@ -31,13 +28,16 @@ class MovieDetail extends React.Component {
           </div>
           <div className="column is-two-thirds">
             <h1 className="title is-2">{movie.title}</h1>
-            <h1 className="title is-3">{movie.tagline}</h1>
+            User Score: {movie.vote_average * 10}%
             <div className="movie-metadata">
               <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
-              <Link to="#" className="external-link-icon imdb">
+              <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
+              <a className="external-link-icon imdb" target="_blank"
+                href={`https://www.imdb.com/title/${movie.imdb_id}`}
+              >
                 <FontAwesomeIcon icon={faImdb} />
-              </Link>
+              </a>
             </div>
             
             <h4 className="title is-4">Synopsis:</h4>
