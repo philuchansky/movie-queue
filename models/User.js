@@ -1,11 +1,18 @@
 const
   mongoose = require('mongoose'),
-  bcrypt = require('bcrypt-nodejs'),
-  userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String
-  })
+  bcrypt = require('bcrypt-nodejs')
+
+const releaseSchema = new mongoose.Schema({
+  TMDB_id: Number,
+  poster_path: String
+})
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+  queue: [releaseSchema]
+})
 
 userSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password)
