@@ -5,6 +5,7 @@ import { posterUrl, formattedDate } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
 import MovieMeta from './MovieMeta'
+import Score from '../Score'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -28,7 +29,7 @@ class MovieDetail extends React.Component {
           </div>
           <div className="column is-two-thirds">
             <h1 className="title is-2">{movie.title}</h1>
-            User Score: {movie.vote_average * 10}%
+            <strong>Score</strong>: <Score percentage={movie.vote_average * 10} />
             <div className="movie-metadata">
               <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
