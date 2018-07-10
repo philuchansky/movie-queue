@@ -33,7 +33,6 @@ export function searchMovies(term) {
     dispatch(searchMoviesLoading())
     httpClient({ method: 'get', url: `/movies/search?term=${term}` }).then(({ data }) => {
       dispatch(searchMoviesSuccess(data))
-      console.log(data)
     })
   }
 }
