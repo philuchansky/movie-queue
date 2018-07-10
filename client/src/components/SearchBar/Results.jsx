@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-const baseImgUrl = "https://image.tmdb.org/t/p/w92"
+import { posterUrl } from '../../helpers'
 
 const Results = (props) => {
   const { items } = props
@@ -11,7 +10,7 @@ const Results = (props) => {
       {items.slice(0, 5).map(item => (
         <Link key={item.id} to={`/movies/${item.id}`} className="panel-block">
           <span className="panel-icon">
-            <img src={baseImgUrl + item.poster_path} alt={item.title} />
+            <img src={posterUrl(item.poster_path, 'tiny')} alt={item.title} />
           </span>
           {item.title}
         </Link>

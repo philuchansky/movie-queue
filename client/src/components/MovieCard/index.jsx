@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { posterUrl } from '../../helpers'
 import './MovieCard.css'
-
-const baseImgUrl = 'https://image.tmdb.org/t/p/w500/'
 
 const MovieCard = (props) => {
   const { movie } = props
@@ -11,7 +10,7 @@ const MovieCard = (props) => {
       <div className="card-image">
         <figure className="image">
           <Link to={`/movies/${movie.id}`}>
-            <img src={baseImgUrl + movie.poster_path} alt={movie.title} />
+            <img src={posterUrl(movie.poster_path, 'medium')} alt={movie.title} />
           </Link>
         </figure>
       </div>
