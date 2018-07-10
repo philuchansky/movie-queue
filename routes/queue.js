@@ -10,6 +10,6 @@ queueRouter.route('/')
   .get(queueCtrl.index)
   .post(queueCtrl.create)
 
-queueRouter.delete('/:TMDB_id', queueCtrl.destroy)
+queueRouter.delete('/:id', queueCtrl.destroy)
 
 module.exports = queueRouter
