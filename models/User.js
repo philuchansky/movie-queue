@@ -2,7 +2,7 @@ const
   mongoose = require('mongoose'),
   bcrypt = require('bcrypt-nodejs')
 
-const releaseSchema = new mongoose.Schema({
+const queueItemSchema = new mongoose.Schema({
   TMDB_id: Number,
   poster_path: String
 })
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
-  queue: [releaseSchema]
+  queue: [queueItemSchema]
 })
 
 userSchema.methods.generateHash = function(password) {
