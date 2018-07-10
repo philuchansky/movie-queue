@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
@@ -13,6 +14,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props
     const { active } = this.state
     return (
       <nav className="NavBar navbar is-warning" aria-label="main navigation">
@@ -33,8 +35,18 @@ class NavBar extends React.Component {
           <div className={`navbar-menu ${active ? 'is-active' : '' }`}>
             <div className="navbar-end">
               <Link to="/" className="navbar-item">Home</Link>
-              <Link to="/queue" className="navbar-item">My Queue</Link>
-              <Link to="/login" className="navbar-item">Log In</Link>
+              {currentUser
+                ? (
+                  <Fragment>
+                    <Link to="/queue" className="navbar-item">My Queue</Link>
+                  </Fragment>
+                )
+                : (
+                  <Fragment>
+                    <Link to="/login" className="navbar-item">Log In</Link>
+                  </Fragment>
+                )
+              }
             </div>
           </div>
         </div>
@@ -43,4 +55,5 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+const mapStateToProps = ({ currentUser }) => ({ currentUser })
+export default connect(mapStateToProps)(NavBar)
