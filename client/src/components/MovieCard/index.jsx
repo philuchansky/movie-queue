@@ -14,13 +14,6 @@ const MovieCard = (props) => {
           </Link>
         </figure>
       </div>
-      <div className="card-content">
-        <div className="content">
-          <Link to={`/movies/${movie.id}`} className="has-text-grey-dark">
-            {movie.title}
-          </Link>
-        </div>
-      </div>
     </div>
   )
 }
