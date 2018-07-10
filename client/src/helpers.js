@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function posterUrl(posterPath, size = 'medium') {
   const baseImgUrl = 'https://image.tmdb.org/t/p/'
   const sizes = {
@@ -9,4 +11,8 @@ export function posterUrl(posterPath, size = 'medium') {
     original: 'original'
   }
   return baseImgUrl + sizes[size] + posterPath
+}
+
+export function formattedDate(releaseDate) {
+  return moment(releaseDate).format('MMMM Do YYYY')
 }
