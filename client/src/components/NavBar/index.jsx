@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { logOut } from '../../actions/auth'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
 import './NavBar.css'
@@ -63,4 +63,4 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = ({ currentUser }) => ({ currentUser })
-export default connect(mapStateToProps, { logOut })(NavBar)
+export default connect(mapStateToProps, { logOut })(withRouter(NavBar))
