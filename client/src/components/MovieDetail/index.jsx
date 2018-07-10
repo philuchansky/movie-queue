@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
+import { posterUrl } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import './MovieDetail.css'
 
@@ -23,7 +24,7 @@ class MovieDetail extends React.Component {
       <div className="MovieDetail">
         <div className="columns">
           <div className="column is-one-third">
-            <img src={baseImgUrl + movie.poster_path} alt={movie.title} />
+            <img src={posterUrl(movie.poster_path, 'large')} alt={movie.title} />
           </div>
           <div className="column is-two-thirds">
             <h1 className="title is-2">{movie.title}</h1>
