@@ -1,5 +1,11 @@
+const QueueItem = require('../models/QueueItem.js')
+
 module.exports = {
-  add: (req, res) => {
+  index: (req, res) => {
+    QueueItem.find({ user: req.user }).exec().then(queueItems => res.json(queueItems))
+  },
+
+  create: (req, res) => {
     const { user } = req
     const queueItem = user.findQueueItem(req.body.TMDB_id)
     if(queueItem) return res.json({ success: false, message: "already in queue" })
@@ -9,7 +15,7 @@ module.exports = {
     })
   },
 
-  remove: (req, res) => {
+  destroy: (req, res) => {
     const { user } = req
     const queueItem = user.findQueueItem(req.params.TMDB_id)
     if(!queueItem) return res.json({ success: false, message: 'no queue item to remove' })
