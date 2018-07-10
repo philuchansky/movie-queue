@@ -7,5 +7,6 @@ const
 queueRouter.use(verifyToken)
 
 queueRouter.post('/', queueCtrl.add)
+queueRouter.delete('/:TMDB_id', queueCtrl.remove)
 
 module.exports = queueRouter
