@@ -22,6 +22,10 @@ userSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password)
 }
 
+userSchema.methods.findQueueItem = function(TMDB_id) {
+  return this.queue.find((q) => q.TMDB_id == TMDB_id) || null
+}
+
 userSchema.pre('save', function(next) {
   if(this.isModified('password')) this.password = this.generateHash(this.password)
   next()
