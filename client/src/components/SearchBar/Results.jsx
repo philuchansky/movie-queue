@@ -16,7 +16,7 @@ const Results = (props) => {
               : <FontAwesomeIcon icon={faFilm} />
             }
           </span>
-          {item.title}
+          {item.title} ({new Date(item.release_date).getFullYear()})
         </Link>
       ))}
     </nav>

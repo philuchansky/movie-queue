@@ -20,7 +20,7 @@ module.exports = {
   search: (req, res) => {
     apiClient.get(`/search/movie?api_key=${TMDB_API_KEY}&query=${req.query.term}`)
     .then(({ data }) => {
-      const pathsToInclude = ['id', 'title', 'poster_path']
+      const pathsToInclude = ['id', 'title', 'poster_path', 'release_date']
       const formattedResults = data.results.map(r => _.pick(r, pathsToInclude))
       res.json(formattedResults)
     })
