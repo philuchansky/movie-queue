@@ -35,7 +35,14 @@ class MovieDetail extends React.Component {
               <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
               <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
-              <div className="external-links">
+            </div>
+            <div className="queue-button">
+              <button className="button is-info">Add To Queue</button>
+            </div>
+            
+            <h4 className="title is-4">Synopsis:</h4>
+            <p>{movie.overview}</p>
+            <div className="external-links">
                 {movie.imdb_id && (
                   <a className="external-link-icon imdb" target="_blank"
                     href={`https://www.imdb.com/title/${movie.imdb_id}`}
@@ -49,10 +56,6 @@ class MovieDetail extends React.Component {
                   </a>
                 )}
               </div>
-            </div>
-            
-            <h4 className="title is-4">Synopsis:</h4>
-            <p>{movie.overview}</p>
           </div>
         </div>
       </div>
