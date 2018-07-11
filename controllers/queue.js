@@ -16,7 +16,7 @@ module.exports = {
   },
 
   destroy: (req, res) => {
-    QueueItem.findByIdAndRemove(req.params.id).select('-user').exec()
+    QueueItem.findOneAndRemove({ TMDB_id: req.params.TMDB_id }).select('-user').exec()
       .then(queueItem => {
         if(!queueItem) return res.status(409).json({ success: false, message: 'no queue item to remove' })
         res.json({ success: true, message: 'queue item removed', queueItem })
