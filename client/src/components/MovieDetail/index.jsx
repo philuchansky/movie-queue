@@ -19,6 +19,11 @@ class MovieDetail extends React.Component {
     return this.props.movie.genres.map((g) => ' ' + g.name).join().slice(1)
   }
 
+  handleAddToQueueClick() {
+    const { movie } = this.props
+    console.log(movie)
+  }
+
   render() {
     const { movie } = this.props
     if(!movie) return <h1>Loading...</h1>
@@ -37,7 +42,7 @@ class MovieDetail extends React.Component {
               <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
             </div>
             <div className="queue-button">
-              <button className="button is-info">Add To Queue</button>
+              <button className="button is-info" onClick={this.handleAddToQueueClick.bind(this)}>Add To Queue</button>
             </div>
             
             <h4 className="title is-4">Synopsis:</h4>
