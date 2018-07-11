@@ -4,6 +4,8 @@ import { posterUrl } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
 
+const getReleaseYear = (date) => new Date(date).getFullYear()
+
 const Results = (props) => {
   const { items } = props
   return (
@@ -16,7 +18,7 @@ const Results = (props) => {
               : <FontAwesomeIcon icon={faFilm} />
             }
           </span>
-          {item.title} ({new Date(item.release_date).getFullYear()})
+          {item.title} ({getReleaseYear(item.release_date)})
         </Link>
       ))}
     </nav>
