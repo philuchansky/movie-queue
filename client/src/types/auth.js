@@ -1,3 +1,9 @@
+export const SIGN_UP = {
+  LOADING: 'SIGN_UP_LOADING',
+  SUCCESS: 'SIGN_UP_SUCCESS',
+  ERROR: 'SIGN_UP_ERROR'
+}
+
 export const LOG_IN = {
   LOADING: 'LOG_IN_LOADING',
   SUCCESS: 'LOG_IN_SUCCESS',
