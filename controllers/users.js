@@ -16,8 +16,8 @@ module.exports = {
         res.json({ success: true, message: "user created, token attached", user, token })
       })
       .catch(err => {
-        if(err.code === 11000) return res.json({ success: false, message: "email is taken" })
-        res.json({ success: false, message: "something went wrong" })
+        if(err.code === 11000) return res.status(409).json({ success: false, message: "email is taken" })
+        res.status(403).json({ success: false, message: "something went wrong, check fields" })
       })
   },
 
