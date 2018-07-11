@@ -7,7 +7,7 @@ module.exports = {
   },
 
   create: (req, res) => {
-    QueueItem.create({ user: req.user, ...req.body })
+    QueueItem.create({ user: req.user._id, ...req.body })
       .then(queueItem => res.json({ success: true, message: 'queue item added', queueItem }))
       .catch(err => {
         if(err.code === 11000) res.json({ success: false, message: 'queue item already exists' })
