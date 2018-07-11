@@ -25,6 +25,11 @@ class MovieDetail extends React.Component {
     addToQueue({TMDB_id: id, poster_path })
   }
 
+  isInQueue() {
+    const { movie, queue } = this.props
+    return queue.find(r => r.id === movie.TMDB_id)
+  }
+
   render() {
     const { movie, currentUser } = this.props
     if(!movie) return <h1>Loading...</h1>
@@ -45,7 +50,22 @@ class MovieDetail extends React.Component {
             {currentUser
               ? (
                 <div className="queue-button">
-                  <button className="button is-info" onClick={this.handleAddToQueueClick.bind(this)}>Add To Queue</button>
+                  {this.isInQueue.call(this)
+                    ? (
+                      <button className="button is-danger"
+                        onClick={() => {}}
+                      >
+                        Remove From Queue
+                      </button>
+                    )
+                    : (
+                      <button className="button is-info"
+                        onClick={this.handleAddToQueueClick.bind(this)}
+                      >
+                        Add To Queue
+                      </button>
+                    )
+                  }
                 </div>
               )
               : null
@@ -74,5 +94,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-const mapStateToProps = ({ movie, currentUser }) => ({ movie, currentUser })
+const mapStateToProps = ({ movie, currentUser, queue }) => ({ movie, currentUser, queue })
 export default connect(mapStateToProps, { getMovie, addToQueue })(MovieDetail)
