@@ -7,6 +7,7 @@ import rootReducer from './reducers'
 import thunk from 'redux-thunk'
 import httpClient from './httpClient'
 import { getCurrentUser } from './actions/auth'
+import { getQueue } from './actions/queue'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
@@ -19,7 +20,10 @@ const store = createStore(
   ))
 )
 
-if(httpClient.getToken()) store.dispatch(getCurrentUser())
+if(httpClient.getToken()) {
+  store.dispatch(getCurrentUser())
+  store.dispatch(getQueue())
+}
 
 ReactDOM.render(
   <Provider store={store}>

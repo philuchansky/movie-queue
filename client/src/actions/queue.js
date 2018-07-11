@@ -1,5 +1,23 @@
 import httpClient from '../httpClient'
-import { ADD_TO_QUEUE, REMOVE_FROM_QUEUE } from '../types/queue'
+import { GET_QUEUE, ADD_TO_QUEUE, REMOVE_FROM_QUEUE } from '../types/queue'
+
+const getQueueLoading = () => ({ type: GET_QUEUE.LOADING })
+const getQueueError = () => ({ type: GET_QUEUE.ERROR })
+const getQueueSuccess = (queueItems) => ({ type: GET_QUEUE.SUCCESS, payload: queueItems })
+export function getQueue() {
+  return (dispatch) => {
+    dispatch(getQueueLoading())
+    return httpClient({ method: 'get', url: '/queue' })
+      .then(({ data }) => {
+        dispatch(getQueueSuccess(data))
+        return data
+      })
+      .catch((error) => {
+        dispatch(getQueueError(error.response.data.message))
+        return false
+      })
+  }
+}
 
 const addToQueueLoading = () => ({ type: ADD_TO_QUEUE.LOADING })
 const addToQueueError = () => ({ type: ADD_TO_QUEUE.ERROR })
