@@ -26,7 +26,7 @@ class MovieDetail extends React.Component {
   }
 
   render() {
-    const { movie } = this.props
+    const { movie, currentUser } = this.props
     if(!movie) return <h1>Loading...</h1>
     return (
       <div className="MovieDetail">
@@ -42,9 +42,14 @@ class MovieDetail extends React.Component {
               <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
               <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
             </div>
-            <div className="queue-button">
-              <button className="button is-info" onClick={this.handleAddToQueueClick.bind(this)}>Add To Queue</button>
-            </div>
+            {currentUser
+              ? (
+                <div className="queue-button">
+                  <button className="button is-info" onClick={this.handleAddToQueueClick.bind(this)}>Add To Queue</button>
+                </div>
+              )
+              : null
+            }
             
             <h4 className="title is-4">Synopsis:</h4>
             <p>{movie.overview}</p>
@@ -69,5 +74,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-const mapStateToProps = ({ movie }) => ({ movie })
+const mapStateToProps = ({ movie, currentUser }) => ({ movie, currentUser })
 export default connect(mapStateToProps, { getMovie, addToQueue })(MovieDetail)
