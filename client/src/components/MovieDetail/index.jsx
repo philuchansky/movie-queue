@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { addToQueue } from '../../actions/queue'
+import { addToQueue, removeFromQueue } from '../../actions/queue'
 import { posterUrl, formattedDate } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
@@ -25,9 +25,14 @@ class MovieDetail extends React.Component {
     addToQueue({TMDB_id: id, poster_path })
   }
 
+  handleRemoveFromQueueClick() {
+    const { removeFromQueue, movie: { id } } = this.props
+    removeFromQueue(id)
+  }
+
   isInQueue() {
     const { movie, queue } = this.props
-    return queue.find(r => r.id === movie.TMDB_id)
+    return queue.find(r => r.TMDB_id === movie.id)
   }
 
   render() {
@@ -53,7 +58,7 @@ class MovieDetail extends React.Component {
                   {this.isInQueue.call(this)
                     ? (
                       <button className="button is-danger"
-                        onClick={() => {}}
+                        onClick={this.handleRemoveFromQueueClick.bind(this)}
                       >
                         Remove From Queue
                       </button>
@@ -95,4 +100,4 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movie, currentUser, queue }) => ({ movie, currentUser, queue })
-export default connect(mapStateToProps, { getMovie, addToQueue })(MovieDetail)
+export default connect(mapStateToProps, { getMovie, addToQueue, removeFromQueue })(MovieDetail)
