@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
+import { addToQueue } from '../../actions/queue'
 import { posterUrl, formattedDate } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
@@ -20,8 +21,8 @@ class MovieDetail extends React.Component {
   }
 
   handleAddToQueueClick() {
-    const { movie } = this.props
-    console.log(movie)
+    const { addToQueue, movie: { id, poster_path } } = this.props
+    addToQueue({TMDB_id: id, poster_path })
   }
 
   render() {
@@ -69,4 +70,4 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movie }) => ({ movie })
-export default connect(mapStateToProps, { getMovie })(MovieDetail)
+export default connect(mapStateToProps, { getMovie, addToQueue })(MovieDetail)
