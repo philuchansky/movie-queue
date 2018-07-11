@@ -1,10 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { signUp } from '../../actions/auth'
 import Form from './Form'
 
 class SignUp extends React.Component {
 
   onFormSubmit(fields) {
-    console.log(fields)
+    const { signUp, history } = this.props
+    signUp(fields).then(user => {
+      if(user) return history.push('/')
+    })
   }
 
   render() {
@@ -21,4 +26,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp
+export default connect(null, { signUp })(SignUp)
