@@ -6,6 +6,7 @@ import SignUp from './components/SignUp'
 import LogIn from './components/LogIn'
 import FeaturedMovies from './components/FeaturedMovies'
 import MovieDetail from './components/MovieDetail'
+import Queue from './components/Queue'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={LogIn} />
               <Route path="/movies/:id" component={MovieDetail} />
+              <Route path="/queue" component={Queue} />
               <Route path="/" component={FeaturedMovies} />
             </Switch>
           </div>
