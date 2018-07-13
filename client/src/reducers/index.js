@@ -4,6 +4,7 @@ import featuredMovies from './featuredMovies'
 import movie from './movie'
 import searchResults from './searchResults'
 import queue from './queue'
+import loading from './loading'
 import { reducer as form } from 'redux-form'
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   movie,
   searchResults,
   queue,
-  form
+  form,
+  loading
 })
