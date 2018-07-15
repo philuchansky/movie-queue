@@ -1,13 +1,8 @@
-const initialState = {
-  currentUser: false,
-  queue: false,
-  featuredMovies: false,
-  movie: false,
-  searchResults: false
-}
-
-export default (state = initialState, action) => {
-  switch(action.type) {
-    default: return state
+export default (_, action) => {
+  if(action.type.includes("LOADING")) {
+    console.log("LOADING")
+    return true
   }
+  console.log("NOT LOADING")
+  return false
 }

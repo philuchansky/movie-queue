@@ -3,8 +3,7 @@ import currentUser from './currentUser'
 import featuredMovies from './featuredMovies'
 import movie from './movie'
 import searchResults from './searchResults'
-import queue from './queue'
-import loading from './loading'
+import queue from './queue' 
 import { reducer as form } from 'redux-form'
 
 export default combineReducers({
@@ -14,5 +13,5 @@ export default combineReducers({
   searchResults,
   queue,
   form,
-  loading
+  loading: (_, action) => action.type.includes("LOADING")
 })

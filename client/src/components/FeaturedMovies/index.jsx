@@ -10,7 +10,8 @@ class FeaturedMovies extends React.Component {
   }
 
   render() {
-    const { featuredMovies } = this.props
+    const { featuredMovies, loading } = this.props
+    if(loading) return <h2 className="title">Loading...</h2>
     return (
       <div className="FeaturedMovies">
         <h1 className="title">New Releases</h1>
@@ -30,5 +31,5 @@ class FeaturedMovies extends React.Component {
   }
 }
 
-const mapStateToProps = ({ featuredMovies }) => ({ featuredMovies })
+const mapStateToProps = ({ featuredMovies, loading }) => ({ featuredMovies, loading })
 export default connect(mapStateToProps, { getFeaturedMovies })(FeaturedMovies)
