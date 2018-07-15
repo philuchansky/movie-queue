@@ -13,12 +13,13 @@ class SignUp extends React.Component {
   }
 
   render() {
+    const { auth: { loading } } = this.props
     return (
       <div className="SignUp">
         <div className="columns is-tablet is-centered">
           <div className="column is-half is-narrow">
             <h1 className="title">Sign Up</h1>
-            <Form onSubmit={this.onFormSubmit.bind(this)} />
+            <Form loading={loading} onSubmit={this.onFormSubmit.bind(this)} />
           </div>
         </div>
       </div>
@@ -26,4 +27,5 @@ class SignUp extends React.Component {
   }
 }
 
-export default connect(null, { signUp })(SignUp)
+const mapStateToProps = ({ auth }) => ({ auth })
+export default connect(mapStateToProps, { signUp })(SignUp)
