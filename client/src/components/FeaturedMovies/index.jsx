@@ -10,13 +10,13 @@ class FeaturedMovies extends React.Component {
   }
 
   render() {
-    const { featuredMovies, loading } = this.props
-    if(loading) return <h2 className="title">Loading...</h2>
+    const { featuredMovies: { loading, movies } } = this.props
+    if(loading) return <h1 className="title">Loading...</h1>
     return (
       <div className="FeaturedMovies">
         <h1 className="title">New Releases</h1>
         <div>
-          {chunk(featuredMovies.slice(0, 10), 5).map((row, rowIdx) => (
+          {chunk(movies.slice(0, 10), 5).map((row, rowIdx) => (
             <div key={rowIdx} className="columns">
               {row.map((movie, colIdx) => (
                 <div key={colIdx} className="column">
@@ -31,5 +31,5 @@ class FeaturedMovies extends React.Component {
   }
 }
 
-const mapStateToProps = ({ featuredMovies, loading }) => ({ featuredMovies, loading })
+const mapStateToProps = ({ featuredMovies }) => ({ featuredMovies })
 export default connect(mapStateToProps, { getFeaturedMovies })(FeaturedMovies)
