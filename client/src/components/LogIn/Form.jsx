@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const Form = (props) => {
-  const { handleSubmit } = props
+  const { handleSubmit, loading } = props
+  console.log(loading)
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
@@ -28,7 +29,9 @@ const Form = (props) => {
       </div>
       <div className="field">
         <div className="control">
-          <button className="button is-warning has-text-weight-bold">Log In</button>
+          <button className={`button is-warning has-text-weight-bold ${loading ? 'is-loading' : ''}`}>
+            Log In
+          </button>
         </div>
       </div>
     </form>

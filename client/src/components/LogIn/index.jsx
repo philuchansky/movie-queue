@@ -5,7 +5,6 @@ import Form from './Form'
 
 
 class LogIn extends React.Component {
-
   onFormSubmit(credentials) {
     const { logIn, history } = this.props
     logIn(credentials).then(user => {
@@ -14,12 +13,13 @@ class LogIn extends React.Component {
   }
 
   render() {
+    const { auth: { loading } } = this.props
     return (
       <div className="LogIn">
         <div className="columns is-tablet is-centered">
           <div className="column is-half is-narrow">
             <h1 className="title">Log In</h1>
-            <Form onSubmit={this.onFormSubmit.bind(this)} />
+            <Form loading={loading} onSubmit={this.onFormSubmit.bind(this)} />
           </div>
         </div>
       </div>
@@ -27,4 +27,5 @@ class LogIn extends React.Component {
   }
 }
 
-export default connect(null, { logIn })(LogIn)
+const mapStateToProps = ({ auth }) => ({ auth })
+export default connect(mapStateToProps, { logIn })(LogIn)
