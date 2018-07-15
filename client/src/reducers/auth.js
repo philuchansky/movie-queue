@@ -6,10 +6,10 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case LOG_IN.SUCCESS:
     case SIGN_UP.SUCCESS:
-      return { ...state, loading: false, currentUser: action.payload }
+      return { ...state, loading: false, currentUser: action.payload, error: null }
     case LOG_IN.LOADING:
     case SIGN_UP.LOADING:
-      return { ...state, loading: true }
+      return { ...state, loading: true, error: null }
     case LOG_IN.ERROR:
     case SIGN_UP.ERROR:
       return { ...initialState, loading: false, error: action.payload }
