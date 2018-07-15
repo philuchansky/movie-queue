@@ -36,7 +36,7 @@ class MovieDetail extends React.Component {
   }
 
   render() {
-    const { movie, currentUser } = this.props
+    const { movie, auth: { currentUser } } = this.props
     if(!movie) return <h1>Loading...</h1>
     return (
       <div className="MovieDetail">
@@ -99,5 +99,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-const mapStateToProps = ({ movie, currentUser, queue }) => ({ movie, currentUser, queue })
+const mapStateToProps = ({ movie, auth, queue }) => ({ movie, auth, queue })
 export default connect(mapStateToProps, { getMovie, addToQueue, removeFromQueue })(MovieDetail)

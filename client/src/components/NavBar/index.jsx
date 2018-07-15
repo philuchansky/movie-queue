@@ -20,7 +20,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { auth: { currentUser } } = this.props
     const { active } = this.state
     return (
       <nav className="NavBar navbar is-warning" aria-label="main navigation">
@@ -63,5 +63,5 @@ class NavBar extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({ currentUser })
+const mapStateToProps = ({ auth }) => ({ auth })
 export default connect(mapStateToProps, { logOut })(withRouter(NavBar))
