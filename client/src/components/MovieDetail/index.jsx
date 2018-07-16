@@ -17,8 +17,7 @@ class MovieDetail extends React.Component {
   }
 
   formatGenres(genres) {
-    const { movieDetail: { movie } } = this.props
-    return movie.genres.map((g) => ' ' + g.name).join().slice(1)
+    return genres.map((g) => ' ' + g.name).join().slice(1)
   }
 
   handleAddToQueueClick() {
@@ -51,7 +50,7 @@ class MovieDetail extends React.Component {
               <strong>Score</strong>: <Score percentage={movie.vote_average * 10} />
               <div className="movie-metadata">
                 <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
-                <MovieMeta label="Genres" value={this.formatGenres(this.genres)} />
+                <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
                 <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
               </div>
               {currentUser
