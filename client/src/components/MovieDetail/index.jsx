@@ -9,6 +9,8 @@ import ExternalLinks from './ExternalLinks'
 import MovieGrid from '../MovieGrid'
 import './MovieDetail.css'
 
+import { chunk } from 'lodash'
+
 class MovieDetail extends React.Component {
   componentDidMount() {
     const { getMovie, match: { params: { id } } } = this.props
@@ -50,6 +52,13 @@ class MovieDetail extends React.Component {
                 <ExternalLinks movie={movie} />
               </div>
             </div>
+            <h2 className="title">Top Cast</h2>
+            {movie.cast.map((c, idx) => (
+              <div key={idx}>
+                <img src={c.profile_path} alt={c.name} />
+                <span>{c.name}</span>
+              </div>
+            ))}
             <h2 className="title">You Might Also Like</h2>
             <MovieGrid movies={movie.recommendations} />
           </Fragment>
