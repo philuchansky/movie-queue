@@ -20,10 +20,7 @@ class MovieDetail extends React.Component {
   componentDidUpdate(prevProps) {
     const { match: { params: { id: prevMovieId } } } = prevProps
     const { getMovie, match: { params: { id: currentMovieId } } } = this.props
-    if(prevMovieId !== currentMovieId) {
-      console.log("Updating to new movie..")
-      getMovie(currentMovieId)
-    }
+    if(prevMovieId !== currentMovieId) getMovie(currentMovieId)
   }
 
   formatGenres(genres) {
