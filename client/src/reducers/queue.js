@@ -4,6 +4,8 @@ const initialState = { loading: false, movies: [] }
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case GET_QUEUE.LOADING:
+      return { ...state, loading: true, movies: [] }
     case GET_QUEUE.SUCCESS:
       return { ...state, loading: false, movies: action.payload }
     case ADD_TO_QUEUE.SUCCESS:
