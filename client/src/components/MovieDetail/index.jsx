@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { addToQueue, removeFromQueue } from '../../actions/queue'
 import { posterUrl, formattedDate } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import MovieMeta from './MovieMeta'
+import QueueButton from '../QueueButton'
 import Score from '../Score'
 import './MovieDetail.css'
 
@@ -18,21 +18,6 @@ class MovieDetail extends React.Component {
 
   formatGenres(genres) {
     return genres.map((g) => ' ' + g.name).join().slice(1)
-  }
-
-  handleAddToQueueClick() {
-    const { addToQueue, movieDetail: { movie: { id, poster_path } } } = this.props
-    addToQueue({TMDB_id: id, poster_path })
-  }
-
-  handleRemoveFromQueueClick() {
-    const { removeFromQueue, movieDetail: { movie } } = this.props
-    removeFromQueue(movie.id)
-  }
-
-  isInQueue() {
-    const { movieDetail: { movie }, queue } = this.props
-    return queue.movies.find(r => r.TMDB_id === movie.id)
   }
 
   render() {
@@ -53,30 +38,7 @@ class MovieDetail extends React.Component {
                 <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
                 <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
               </div>
-              {currentUser
-                ? (
-                  <div className="queue-button">
-                    {this.isInQueue.call(this)
-                      ? (
-                        <button className="button is-danger"
-                          onClick={this.handleRemoveFromQueueClick.bind(this)}
-                        >
-                          Remove From Queue
-                        </button>
-                      )
-                      : (
-                        <button className="button is-info"
-                          onClick={this.handleAddToQueueClick.bind(this)}
-                        >
-                          Add To Queue
-                        </button>
-                      )
-                    }
-                  </div>
-                )
-                : null
-              }
-              
+              {currentUser ? <QueueButton movie={movie} /> : null}
               <h4 className="title is-4">Synopsis:</h4>
               <p>{movie.overview}</p>
               <div className="external-links">
@@ -101,5 +63,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-const mapStateToProps = ({ movieDetail, auth, queue }) => ({ movieDetail, auth, queue })
-export default connect(mapStateToProps, { getMovie, addToQueue, removeFromQueue })(MovieDetail)
+const mapStateToProps = ({ movieDetail, auth }) => ({ movieDetail, auth })
+export default connect(mapStateToProps, { getMovie })(MovieDetail)
