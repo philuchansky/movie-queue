@@ -1,13 +1,21 @@
 import { GET_QUEUE, ADD_TO_QUEUE, REMOVE_FROM_QUEUE } from '../types/queue'
 
-export default (state = [], action) => {
+const initialState = { loading: false, movies: [] }
+
+export default (state = initialState, action) => {
   switch(action.type) {
     case GET_QUEUE.SUCCESS:
-      return action.payload
+      return { ...state, loading: false, movies: action.payload }
     case ADD_TO_QUEUE.SUCCESS:
-      return [...state, action.payload]
+      return {
+        ...state, loading: false,
+        movies: [ ...state.movies, action.payload ]
+      }
     case REMOVE_FROM_QUEUE.SUCCESS:
-      return state.filter((queueItem) => queueItem._id !== action.payload._id)
+      return {
+        ...state, loading: false,
+        movies: state.movies.filter((queueItem) => queueItem._id !== action.payload._id)
+      }
     default: return state
   }
 }
