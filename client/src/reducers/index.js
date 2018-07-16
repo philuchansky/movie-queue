@@ -12,6 +12,5 @@ export default combineReducers({
   movieDetail,
   searchResults,
   queue,
-  form,
-  loading: (_, action) => action.type.includes("LOADING")
+  form
 })
