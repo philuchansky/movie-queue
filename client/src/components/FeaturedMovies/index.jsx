@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getFeaturedMovies } from '../../actions/movies'
-import { chunk } from 'lodash'
-import MovieCard from '../MovieCard'
+import MovieGrid from '../MovieGrid'
 
 class FeaturedMovies extends React.Component {
   componentDidMount() {
@@ -15,17 +14,7 @@ class FeaturedMovies extends React.Component {
     return (
       <div className="FeaturedMovies">
         <h1 className="title">New Releases</h1>
-        <div>
-          {chunk(movies.slice(0, 10), 5).map((row, rowIdx) => (
-            <div key={rowIdx} className="columns">
-              {row.map((movie, colIdx) => (
-                <div key={colIdx} className="column">
-                  <MovieCard movie={movie} />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+        <MovieGrid movies={movies} />
       </div>
     )
   }

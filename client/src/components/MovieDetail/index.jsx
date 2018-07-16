@@ -6,10 +6,8 @@ import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
 import ExternalLinks from './ExternalLinks'
+import MovieGrid from '../MovieGrid'
 import './MovieDetail.css'
-
-import _ from 'lodash'
-import MovieCard from '../MovieCard'
 
 class MovieDetail extends React.Component {
   componentDidMount() {
@@ -53,17 +51,7 @@ class MovieDetail extends React.Component {
               </div>
             </div>
             <h2 className="title">You Might Also Like</h2>
-            <div>
-              {_.chunk(movie.recommendations.slice(0, 10), 5).map((row, rowIdx) => (
-                <div key={rowIdx} className="columns">
-                  {row.map((movie, colIdx) => (
-                    <div key={colIdx} className="column">
-                      <MovieCard movie={movie} />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+            <MovieGrid movies={movie.recommendations} />
           </Fragment>
         )}
       </div>
