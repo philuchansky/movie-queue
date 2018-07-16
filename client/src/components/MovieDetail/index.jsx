@@ -27,13 +27,13 @@ class MovieDetail extends React.Component {
   }
 
   handleRemoveFromQueueClick() {
-    const { removeFromQueue, movie: { id } } = this.props
-    removeFromQueue(id)
+    const { removeFromQueue, movieDetail: { movie } } = this.props
+    removeFromQueue(movie.id)
   }
 
   isInQueue() {
     const { movieDetail: { movie }, queue } = this.props
-    return queue.find(r => r.TMDB_id === movie.id)
+    return queue.movies.find(r => r.TMDB_id === movie.id)
   }
 
   render() {

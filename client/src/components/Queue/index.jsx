@@ -4,8 +4,8 @@ import { chunk } from 'lodash'
 import MovieCard from '../MovieCard'
 
 const Queue = (props) => {
-  const { queue } = props
-  let formattedQueue = queue.map(queueItem => ({ ...queueItem, id: queueItem.TMDB_id }))
+  const { queue: { movies } } = props
+  let formattedQueue = movies.map(queueItem => ({ ...queueItem, id: queueItem.TMDB_id }))
   return (
     <div className="Queue">
       {chunk(formattedQueue.reverse().slice(0, 10), 5).map((row, rowIdx) => (
