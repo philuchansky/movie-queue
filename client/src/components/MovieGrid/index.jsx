@@ -9,7 +9,7 @@ const MovieGrid = (props) => {
       {chunk(movies.slice(0, 10), 5).map((row, rowIdx) => (
         <div key={rowIdx} className="columns">
           {row.map((movie, colIdx) => (
-            <div key={colIdx} className="column">
+            <div key={colIdx} className="column is-one-fifth">
               <MovieCard movie={movie} />
             </div>
           ))}
