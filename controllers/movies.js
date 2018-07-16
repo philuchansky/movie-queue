@@ -12,9 +12,17 @@ module.exports = {
   },
 
   show: (req, res) => {
-    apiClient.get(`/movie/${req.params.id}?api_key=${TMDB_API_KEY}`)
-    .then(({ data }) => res.json(data))
-    .catch(({ response: { data } }) => res.json(data))
+    const getMovie = apiClient.get(`/movie/${req.params.id}?api_key=${TMDB_API_KEY}`)
+    const getMovieRecommendations = apiClient.get(`/movie/${req.params.id}/recommendations?api_key=${TMDB_API_KEY}`)
+
+    Promise.all([getMovie, getMovieRecommendations])
+    .then(([ movie, recommendations ]) => {
+      const formattedRecommendations = recommendations.data.results.map(({ title, id, poster_path }) => (
+        { title, id, poster_path }
+      ))
+      res.json({ ...movie.data, recommendations: formattedRecommendations })
+    })
+    // .catch(({ response: { data } }) => res.json(data))
   },
 
   search: (req, res) => {
