@@ -52,13 +52,7 @@ class MovieDetail extends React.Component {
               </div>
             </div>
             <h2 className="title">Top Cast</h2>
-            {movie.cast.map((c, idx) => (
-              <div key={idx}>
-                {/* <img src={tmdbImgUrl(c.profile_path)} alt={c.name} /> */}
-                <span>{c.name}</span>
-              </div>
-            ))}
-            <CardGrid data={movie.cast} type="cast" />
+            <CardGrid data={movie.cast} type="people" />
             <h2 className="title">You Might Also Like</h2>
             <MovieGrid movies={movie.recommendations} />
           </Fragment>
