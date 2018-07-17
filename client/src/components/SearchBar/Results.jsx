@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { posterUrl } from '../../helpers'
+import { tmdbImgUrl } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
 
@@ -14,7 +14,7 @@ const Results = (props) => {
         <Link key={item.id} to={`/movies/${item.id}`} className="panel-block">
           <span className="panel-icon">
             {item.poster_path
-              ? <img src={posterUrl(item.poster_path, 'tiny')} alt={item.title} />
+              ? <img src={tmdbImgUrl(item.poster_path, 'tiny')} alt={item.title} />
               : <FontAwesomeIcon icon={faFilm} />
             }
           </span>

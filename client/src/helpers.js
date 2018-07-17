@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export function posterUrl(posterPath, size = 'medium') {
+export function tmdbImgUrl(posterPath, size = 'medium') {
   const baseImgUrl = 'https://image.tmdb.org/t/p/'
   const sizes = {
     tiny: 'w92/',
