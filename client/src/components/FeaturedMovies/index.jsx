@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getFeaturedMovies } from '../../actions/movies'
-import MovieGrid from '../MovieGrid'
+import CardGrid from '../CardGrid'
 
 class FeaturedMovies extends React.Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class FeaturedMovies extends React.Component {
     return (
       <div className="FeaturedMovies">
         <h1 className="title">New Releases</h1>
-        <MovieGrid movies={movies} />
+        <CardGrid data={movies} />
       </div>
     )
   }
