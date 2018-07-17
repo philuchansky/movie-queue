@@ -11,14 +11,14 @@ const columnMappings = {
 }
 
 const CardGrid = (props) => {
-  const { data, max, columns } = props
+  const { data, max, columns, showLabels } = props
   return (
     <div className="CardGrid">
       {chunk(data.slice(0, max || columns * 2 || 10), columns || 5).map((row, rowIdx) => (
         <div key={rowIdx} className="columns">
           {row.map((el, colIdx) => (
             <div key={colIdx} className={`column ${columnMappings[columns] || 'is-one-fifth'}`}>
-              <Card movie={el} />
+              <Card movie={el} showLabel={showLabels} />
             </div>
           ))}
         </div>
@@ -28,7 +28,13 @@ const CardGrid = (props) => {
 }
 
 CardGrid.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  type: PropTypes.oneOf(['movies', 'cast', 'crew']).isRequired,
+  showLabels: PropTypes.bool
+}
+
+CardGrid.defaultProps = {
+  showLabels: false
 }
 
 export default CardGrid

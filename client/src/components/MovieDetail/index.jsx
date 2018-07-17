@@ -6,6 +6,7 @@ import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
 import ExternalLinks from './ExternalLinks'
+import CardGrid from '../CardGrid'
 import MovieGrid from '../MovieGrid'
 import './MovieDetail.css'
 
@@ -53,10 +54,11 @@ class MovieDetail extends React.Component {
             <h2 className="title">Top Cast</h2>
             {movie.cast.map((c, idx) => (
               <div key={idx}>
-                <img src={tmdbImgUrl(c.profile_path)} alt={c.name} />
+                {/* <img src={tmdbImgUrl(c.profile_path)} alt={c.name} /> */}
                 <span>{c.name}</span>
               </div>
             ))}
+            <CardGrid data={movie.cast} type="cast" />
             <h2 className="title">You Might Also Like</h2>
             <MovieGrid movies={movie.recommendations} />
           </Fragment>
