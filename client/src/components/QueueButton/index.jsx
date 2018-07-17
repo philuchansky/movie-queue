@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addToQueue, removeFromQueue } from '../../actions/queue'
 
@@ -41,6 +42,10 @@ class QueueButton extends React.Component {
       </div>
     )
   }
+}
+
+QueueButton.propTypes = {
+  movie: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({ queue }) => ({ queue })
