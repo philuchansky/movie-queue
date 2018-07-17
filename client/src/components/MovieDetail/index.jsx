@@ -7,7 +7,6 @@ import QueueButton from '../QueueButton'
 import Score from '../Score'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
-import MovieGrid from '../MovieGrid'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -54,7 +53,7 @@ class MovieDetail extends React.Component {
             <h2 className="title">Top Cast</h2>
             <CardGrid data={movie.cast} type="people" />
             <h2 className="title">You Might Also Like</h2>
-            <MovieGrid movies={movie.recommendations} />
+            <CardGrid data={movie.recommendations} type="movies" />
           </Fragment>
         )}
       </div>

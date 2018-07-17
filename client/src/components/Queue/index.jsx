@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getQueue } from '../../actions/queue'
-import MovieGrid from '../MovieGrid'
+import CardGrid from '../CardGrid'
 
 class Queue extends React.Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class Queue extends React.Component {
     let formattedQueue = movies.map(queueItem => ({ ...queueItem, id: queueItem.TMDB_id }))
     return (
       <div className="Queue">
-        <MovieGrid movies={formattedQueue} />
+        <CardGrid data={formattedQueue} type="movies" />
       </div>
     )
   }
