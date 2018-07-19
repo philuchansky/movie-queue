@@ -33,20 +33,19 @@ class MovieDetail extends React.Component {
         {movie && (
           <Fragment>
             <div className="columns">
-              <div className="column is-one-third">
+              <div className="column is-one-quarter">
                 <img src={tmdbImgUrl(movie.poster_path, 'large')} alt={movie.title} />
               </div>
-              <div className="column is-two-thirds">
-                <h1 className="title is-2">{movie.title} ({getYear(movie.release_date)})</h1>
-                <strong>Score</strong>: <Score percentage={movie.vote_average * 10} />
+              <div className="column is-three-quarters">
+                <h1 className="title is-2">
+                  <Score percentage={movie.vote_average * 10} /> {movie.title} <small>({getYear(movie.release_date)})</small> 
+                </h1>
+                <p className="overview"><strong>Overview:</strong> {movie.overview}</p>   
                 <div className="movie-metadata">
                   <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
                   <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
                   <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
                 </div>
-                {currentUser ? <QueueButton movie={movie} /> : null}
-                <h4 className="title is-4">Synopsis:</h4>
-                <p>{movie.overview}</p>
                 <ExternalLinks movie={movie} />
               </div>
             </div>
