@@ -15,9 +15,10 @@ module.exports = {
     const getMovie = apiClient.get(`/movie/${req.params.id}?api_key=${TMDB_API_KEY}`)
     const getMovieRecommendations = apiClient.get(`/movie/${req.params.id}/recommendations?api_key=${TMDB_API_KEY}`)
     const getMovieCredits = apiClient.get(`/movie/${req.params.id}/credits?api_key=${TMDB_API_KEY}`)
+    const getMovieVideos = apiClient.get(`/movie/${req.params.id}/videos?api_key=${TMDB_API_KEY}`)
 
-    Promise.all([getMovie, getMovieRecommendations, getMovieCredits])
-    .then(([ movie, recommendations, credits ]) => {
+    Promise.all([getMovie, getMovieRecommendations, getMovieCredits, getMovieVideos])
+    .then(([ movie, recommendations, credits, videos ]) => {
       const formattedRecommendations = recommendations.data.results.map(({ title, id, poster_path }) => (
         { title, id, poster_path }
       ))
@@ -26,7 +27,8 @@ module.exports = {
         ...movie.data,
         recommendations: formattedRecommendations,
         cast: cast.slice(0, 5),
-        crew: crew.slice(0, 5)
+        crew: crew.slice(0, 5),
+        trailer: videos.data.results[0] || null
       })
     })
     // .catch(({ response: { data } }) => res.json(data))
