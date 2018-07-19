@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { closeModal } from '../../actions/modal'
 
 const Modal = (props) => {
-  const { modal: { active }, closeModal } = props
+  const { modal, closeModal } = props
   return (
     <div className="Modal">
-      <div className={`modal ${active ? 'is-active' : ''}`}>
+      <div className={`modal ${modal.active ? 'is-active' : ''}`}>
         <div className="modal-background"></div>
         <div className="modal-content">
           <p className="image is-4by3">
