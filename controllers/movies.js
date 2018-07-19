@@ -19,16 +19,18 @@ module.exports = {
 
     Promise.all([getMovie, getMovieRecommendations, getMovieCredits, getMovieVideos])
     .then(([ movie, recommendations, credits, videos ]) => {
+      
       const formattedRecommendations = recommendations.data.results.map(({ title, id, poster_path }) => (
         { title, id, poster_path }
       ))
       const { cast, crew } = credits.data
+      const trailer = videos.data.results.find(v => v.type === "Trailer")
       res.json({
         ...movie.data,
         recommendations: formattedRecommendations,
         cast: cast.slice(0, 5),
         crew: crew.slice(0, 5),
-        trailer: videos.data.results[0] || null
+        trailer: trailer || null
       })
     })
     // .catch(({ response: { data } }) => res.json(data))

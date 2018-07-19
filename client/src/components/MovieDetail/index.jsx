@@ -64,15 +64,18 @@ class MovieDetail extends React.Component {
               </div>
             </div>
             <div className="columns">
+              <div className="column is-one-third">
+                <h4 className="title is-4">Watch The Trailer</h4>
+                <a href={`http://youtube.com/watch?v=${movie.trailer.key}`} target="_blank">
+                  <img src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`} />
+                </a>
+              </div>
               <div className="column is-two-thirds">
-                <h2 className="title">Featured Cast</h2>
+                <h4 className="title is-4">Featured Cast</h4>
                 <CardGrid data={movie.cast} type="people" showLabels />
               </div>
-              <div className="column is-one-third">
-
-              </div>
             </div>
-            <h2 className="title">You Might Also Like</h2>
+            <h3 className="title is-3">You Might Also Like</h3>
             <CardGrid data={movie.recommendations} type="movies" />
           </Fragment>
         )}
