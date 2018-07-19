@@ -65,7 +65,7 @@ class MovieDetail extends React.Component {
             </div>
             <div className="columns">
               <div className="column is-one-half">
-                <h2 className="title">Top Cast</h2>
+                <h2 className="title">Featured Cast</h2>
                 <CardGrid data={movie.cast} type="people" showLabels />
               </div>
               <div className="column is-one-half">
