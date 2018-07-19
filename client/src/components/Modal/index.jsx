@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { closeModal } from '../../actions/modal'
+import { tmdbImgUrl } from '../../helpers'
 
 const Modal = (props) => {
   const { modal, closeModal } = props
@@ -9,9 +10,11 @@ const Modal = (props) => {
       <div className={`modal ${modal.active ? 'is-active' : ''}`}>
         <div className="modal-background"></div>
         <div className="modal-content">
-          <p className="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="" />
-          </p>
+          {modal.type === 'image' && (
+            <p className="image">
+              <img src={tmdbImgUrl(modal.content, 'original')} alt="" />
+            </p>
+          )}
         </div>
         <button
           className="modal-close is-large"

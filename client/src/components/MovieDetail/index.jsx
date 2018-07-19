@@ -24,8 +24,8 @@ class MovieDetail extends React.Component {
   }
 
   handlePosterClick() {
-    console.log("OPENING MODAL...")
-    this.props.openModalImage()
+    const { movieDetail: { movie } } = this.props
+    this.props.openModalImage(movie.poster_path)
   }
 
   render() {
