@@ -25,7 +25,7 @@ class MovieDetail extends React.Component {
 
   handlePosterClick() {
     const { movieDetail: { movie } } = this.props
-    this.props.openModalImage(movie.poster_path)
+    this.props.openModalImage(movie.title, movie.poster_path)
   }
 
   render() {

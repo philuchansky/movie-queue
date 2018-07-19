@@ -12,7 +12,7 @@ const Modal = (props) => {
         <div className="modal-content">
           {modal.type === 'image' && (
             <p className="image">
-              <img src={tmdbImgUrl(modal.content, 'original')} alt="" />
+              <img src={tmdbImgUrl(modal.content, 'original')} alt={modal.title} />
             </p>
           )}
         </div>
