@@ -5,6 +5,7 @@ import { tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
+import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
 import './MovieDetail.css'
@@ -57,11 +58,7 @@ class MovieDetail extends React.Component {
                     <ExternalLinks movie={movie} />
                   </div>
                   <div className="column">
-                    <ul className="FeaturedCrew">
-                      {movie.crew.map(c => (
-                        <li><strong>{c.job}:</strong> {c.name}</li>
-                      ))}
-                    </ul>
+                    <FeaturedCrew crew={movie.crew} />
                   </div>
                 </div> 
               </div>
