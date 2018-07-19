@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { openModalImage } from '../../actions/modal'
+import { openModalImage, openModalTrailer } from '../../actions/modal'
 import { joinBy, tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
@@ -24,8 +24,13 @@ class MovieDetail extends React.Component {
   }
 
   handlePosterClick() {
-    const { movieDetail: { movie } } = this.props
-    this.props.openModalImage(movie.title, movie.poster_path)
+    const { openModalImage, movieDetail: { movie } } = this.props
+    openModalImage(movie.title, movie.poster_path)
+  }
+
+  handleTrailerThumbClick() {
+    const { openModalTrailer, movieDetail: { movie } } = this.props
+    openModalTrailer(movie.title, movie.trailer.key)
   }
 
   render() {
@@ -73,9 +78,13 @@ class MovieDetail extends React.Component {
             <div className="columns">
               <div className="column is-one-third">
                 <h4 className="title is-4">Watch The Trailer</h4>
-                <a href={`http://youtube.com/watch?v=${movie.trailer.key}`} target="_blank">
-                  <img src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`} />
-                </a>
+                {/* <a href={`http://youtube.com/watch?v=${movie.trailer.key}`} target="_blank"> */}
+                  <img
+                    src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                    alt={movie.trailer.name}
+                    onClick={this.handleTrailerThumbClick.bind(this)}
+                  />
+                {/* </a> */}
               </div>
               <div className="column is-two-thirds">
                 <h4 className="title is-4">Featured Cast</h4>
@@ -92,4 +101,4 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movieDetail, auth }) => ({ movieDetail, auth })
-export default connect(mapStateToProps, { getMovie, openModalImage })(MovieDetail)
+export default connect(mapStateToProps, { getMovie, openModalImage, openModalTrailer })(MovieDetail)

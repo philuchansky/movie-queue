@@ -5,4 +5,9 @@ export const openModalImage = (title, content) => ({
   payload: { title, content }
 })
 
+export const openModalTrailer = (title, content) => ({
+  type: OPEN_MODAL.TRAILER,
+  payload: { title, content }
+})
+
 export const closeModal = () => ({ type: CLOSE_MODAL })
