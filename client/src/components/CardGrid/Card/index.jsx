@@ -13,17 +13,23 @@ const Card = (props) => {
   }[type]
   
   return (
-    <div className="Card card">
-      <div className="card-image">
-        <figure className="image">
-          <Link to={`/${type}/${data.id}`}>
-            <img src={imgPath} alt={label} />
-            {showLabel ? label : null}
-          </Link>
-        </figure>
+    <Link className="Card" to={`/${type}/${data.id}`}>
+      <div className="card">
+        <div className="card-image">
+          <figure className="image">
+              <img src={imgPath} alt={label} />
+          </figure>
+        </div>
+        {showLabel && (
+          <div className="card-content">
+            <div className="content">
+              {label}
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </Link>
   )
 }
-
+//  {showLabel ? label : null}
 export default Card
