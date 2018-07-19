@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
+import { openModalImage } from '../../actions/modal'
 import { joinBy, tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
@@ -22,6 +23,11 @@ class MovieDetail extends React.Component {
     if(prevMovieId !== currentMovieId) getMovie(currentMovieId)
   }
 
+  handlePosterClick() {
+    console.log("OPENING MODAL...")
+    this.props.openModalImage()
+  }
+
   render() {
     const { movieDetail: { loading, movie } , auth: { currentUser } } = this.props
     return (
@@ -31,7 +37,11 @@ class MovieDetail extends React.Component {
           <Fragment>
             <div className="columns">
               <div className="column is-one-quarter">
-                <img src={tmdbImgUrl(movie.poster_path, 'large')} alt={movie.title} />
+                <img
+                  src={tmdbImgUrl(movie.poster_path, 'large')}
+                  alt={movie.title}
+                  onClick={this.handlePosterClick.bind(this)}
+                />
               </div>
               <div className="column is-three-quarters">
                 <h3 className="title is-3">
@@ -82,4 +92,4 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movieDetail, auth }) => ({ movieDetail, auth })
-export default connect(mapStateToProps, { getMovie })(MovieDetail)
+export default connect(mapStateToProps, { getMovie, openModalImage })(MovieDetail)
