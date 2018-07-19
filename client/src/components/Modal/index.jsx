@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { closeModal } from '../../actions/modal'
 import { tmdbImgUrl } from '../../helpers'
+import './Modal.css'
 
 const Modal = (props) => {
   const { modal, closeModal } = props
@@ -10,14 +11,16 @@ const Modal = (props) => {
       <div className={`modal ${modal.active ? 'is-active' : ''}`}>
         <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-content">
-            <p className="image">
               {modal.type === 'image' && (
-                <img src={tmdbImgUrl(modal.content, 'original')} alt={modal.title} />
+                <p className="image">
+                  <img src={tmdbImgUrl(modal.content, 'original')} alt={modal.title} />
+                </p>
               )}
               {modal.type === 'trailer' && (
-                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${modal.content}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div className="trailer">
+                  <iframe src={`https://www.youtube.com/embed/${modal.content}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
               )}
-            </p>
         </div>
         <button
           className="modal-close is-large"
