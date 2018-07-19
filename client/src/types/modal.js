@@ -1,0 +1,6 @@
+export const OPEN_MODAL = {
+  TRAILER: 'OPEN_MODAL_TRAILER',
+  IMAGE: 'OPEN_MODAL_IMAGE'
+}
+
+export const CLOSE_MODAL = 'CLOSE_MODAL'
