@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { closeModal } from '../../actions/modal'
 
 const Modal = (props) => {
-  const { modal: { active } } = props
+  const { modal: { active }, closeModal } = props
   return (
     <div className="Modal">
       <div className={`modal ${active ? 'is-active' : ''}`}>
@@ -12,11 +13,15 @@ const Modal = (props) => {
             <img src="https://bulma.io/images/placeholders/1280x960.png" alt="" />
           </p>
         </div>
-        <button className="modal-close is-large" aria-label="close"></button>
+        <button
+          className="modal-close is-large"
+          aria-label="close"
+          onClick={closeModal}
+        ></button>
       </div>
     </div>
   )
 }
 
 const mapStateToProps = ({ modal }) => ({ modal })
-export default connect(mapStateToProps)(Modal)
+export default connect(mapStateToProps, { closeModal })(Modal)
