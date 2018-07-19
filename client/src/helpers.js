@@ -1,5 +1,9 @@
 import moment from 'moment'
 
+export function joinBy(key, collection) {
+  return collection.map((c) => ' ' + c[key]).join().slice(1)
+}
+
 export function tmdbImgUrl(posterPath, size = 'medium') {
   const baseImgUrl = 'https://image.tmdb.org/t/p/'
   const sizes = {

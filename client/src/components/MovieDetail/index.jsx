@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
+import { joinBy, tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
@@ -22,10 +22,6 @@ class MovieDetail extends React.Component {
     if(prevMovieId !== currentMovieId) getMovie(currentMovieId)
   }
 
-  formatGenres(genres) {
-    return genres.map((g) => ' ' + g.name).join().slice(1)
-  }
-
   render() {
     const { movieDetail: { loading, movie } , auth: { currentUser } } = this.props
     return (
@@ -41,12 +37,12 @@ class MovieDetail extends React.Component {
                 <h3 className="title is-3">
                   <Score percentage={movie.vote_average * 10} /> {movie.title} <small>({getYear(movie.release_date)})</small> 
                 </h3>
-                <p className="overview"><strong>Overview:</strong> {movie.overview}</p>
+                
                 <div className="columns">
                   <div className="column is-3">
                     <div className="movie-metadata">
                       <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
-                      <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
+                      <MovieMeta label="Genres" value={joinBy('name', movie.genres)} />
                     </div>
                     {currentUser ? <QueueButton movie={movie} /> : null}
                   </div>
@@ -61,6 +57,7 @@ class MovieDetail extends React.Component {
                     <FeaturedCrew crew={movie.crew} />
                   </div>
                 </div> 
+                <p className="overview"><strong>Overview:</strong> {movie.overview}</p>
               </div>
             </div>
             <div className="columns">
