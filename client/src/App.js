@@ -7,6 +7,7 @@ import LogIn from './components/LogIn'
 import FeaturedMovies from './components/FeaturedMovies'
 import MovieDetail from './components/MovieDetail'
 import Queue from './components/Queue'
+import Modal from './components/Modal'
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             </Switch>
           </div>
         </div>
+        <Modal />
       </div>
     );
   }
