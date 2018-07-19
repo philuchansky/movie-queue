@@ -50,8 +50,16 @@ class MovieDetail extends React.Component {
                 <ExternalLinks movie={movie} />
               </div>
             </div>
-            <h2 className="title">Top Cast</h2>
-            <CardGrid data={movie.cast} type="people" />
+            <div className="columns">
+              <div className="column is-one-half">
+                <h2 className="title">Top Cast</h2>
+                <CardGrid data={movie.cast} type="people" showLabels />
+              </div>
+              <div className="column is-one-half">
+                <h2 className="title">Top Crew</h2>
+                <CardGrid data={movie.crew} type="people" showLabels />
+              </div>
+            </div>
             <h2 className="title">You Might Also Like</h2>
             <CardGrid data={movie.recommendations} type="movies" />
           </Fragment>
