@@ -8,13 +8,16 @@ const Modal = (props) => {
   return (
     <div className="Modal">
       <div className={`modal ${modal.active ? 'is-active' : ''}`}>
-        <div className="modal-background"></div>
+        <div className="modal-background" onClick={closeModal}></div>
         <div className="modal-content">
-          {modal.type === 'image' && (
             <p className="image">
-              <img src={tmdbImgUrl(modal.content, 'original')} alt={modal.title} />
+              {modal.type === 'image' && (
+                <img src={tmdbImgUrl(modal.content, 'original')} alt={modal.title} />
+              )}
+              {modal.type === 'trailer' && (
+                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${modal.content}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              )}
             </p>
-          )}
         </div>
         <button
           className="modal-close is-large"
