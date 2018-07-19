@@ -16,3 +16,7 @@ export function tmdbImgUrl(posterPath, size = 'medium') {
 export function formattedDate(releaseDate) {
   return moment(releaseDate).format('MMMM Do YYYY')
 }
+
+export function getYear(releaseDate) {
+  return (new Date(releaseDate)).getFullYear()
+}

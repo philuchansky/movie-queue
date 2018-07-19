@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { tmdbImgUrl, formattedDate } from '../../helpers'
+import { tmdbImgUrl, formattedDate, getYear } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
@@ -37,7 +37,7 @@ class MovieDetail extends React.Component {
                 <img src={tmdbImgUrl(movie.poster_path, 'large')} alt={movie.title} />
               </div>
               <div className="column is-two-thirds">
-                <h1 className="title is-2">{movie.title}</h1>
+                <h1 className="title is-2">{movie.title} ({getYear(movie.release_date)})</h1>
                 <strong>Score</strong>: <Score percentage={movie.vote_average * 10} />
                 <div className="movie-metadata">
                   <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
