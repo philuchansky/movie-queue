@@ -35,7 +35,7 @@ class MovieDetail extends React.Component {
               </div>
               <div className="column is-three-quarters">
                 <h3 className="title is-3">
-                  <Score percentage={movie.vote_average * 10} /> {movie.title} <small>({getYear(movie.release_date)})</small> 
+                  {movie.title} <small>({getYear(movie.release_date)})</small> <Score percentage={movie.vote_average * 10} />
                 </h3>
                 
                 <div className="columns">
