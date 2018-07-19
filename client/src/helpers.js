@@ -20,3 +20,9 @@ export function formattedDate(releaseDate) {
 export function getYear(releaseDate) {
   return (new Date(releaseDate)).getFullYear()
 }
+
+export const currency = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0
+});

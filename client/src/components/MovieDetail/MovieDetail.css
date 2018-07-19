@@ -1,5 +1,5 @@
-.MovieDetail .overview {
-  margin-bottom: 3rem;
+.MovieDetail .overview, .MovieMeta {
+  margin-bottom: 1.2rem;
 }
 
 .MovieDetail .external-links a {
@@ -15,4 +15,8 @@
 .MovieDetail .queue-button {
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+
+.MovieDetail .FeaturedCrew li {
+  margin-bottom: .75rem;
 }

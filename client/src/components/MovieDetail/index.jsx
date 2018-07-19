@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { tmdbImgUrl, formattedDate, getYear } from '../../helpers'
+import { tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
@@ -37,16 +37,33 @@ class MovieDetail extends React.Component {
                 <img src={tmdbImgUrl(movie.poster_path, 'large')} alt={movie.title} />
               </div>
               <div className="column is-three-quarters">
-                <h1 className="title is-2">
+                <h3 className="title is-3">
                   <Score percentage={movie.vote_average * 10} /> {movie.title} <small>({getYear(movie.release_date)})</small> 
-                </h1>
-                <p className="overview"><strong>Overview:</strong> {movie.overview}</p>   
-                <div className="movie-metadata">
-                  <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
-                  <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
-                  <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
-                </div>
-                <ExternalLinks movie={movie} />
+                </h3>
+                <p className="overview"><strong>Overview:</strong> {movie.overview}</p>
+                <div className="columns">
+                  <div className="column is-3">
+                    <div className="movie-metadata">
+                      <MovieMeta label="Release Date" value={formattedDate(movie.release_date)} />
+                      <MovieMeta label="Genres" value={this.formatGenres(movie.genres)} />
+                    </div>
+                    {currentUser ? <QueueButton movie={movie} /> : null}
+                  </div>
+                  <div className="column is-3">
+                    <div className="movie-metadata">
+                      <MovieMeta label="Runtime" value={`${movie.runtime} minutes`} />
+                      <MovieMeta label="Budget" value={currency.format(movie.budget)} />
+                    </div>
+                    <ExternalLinks movie={movie} />
+                  </div>
+                  <div className="column">
+                    <ul className="FeaturedCrew">
+                      {movie.crew.map(c => (
+                        <li><strong>{c.job}:</strong> {c.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div> 
               </div>
             </div>
             <div className="columns">
@@ -55,8 +72,7 @@ class MovieDetail extends React.Component {
                 <CardGrid data={movie.cast} type="people" showLabels />
               </div>
               <div className="column is-one-half">
-                <h2 className="title">Top Crew</h2>
-                <CardGrid data={movie.crew} type="people" showLabels />
+
               </div>
             </div>
             <h2 className="title">You Might Also Like</h2>
