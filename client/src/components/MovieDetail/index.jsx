@@ -79,12 +79,17 @@ class MovieDetail extends React.Component {
               <div className="column is-one-third">
                 <h4 className="title is-4">Watch The Trailer</h4>
                 {/* <a href={`http://youtube.com/watch?v=${movie.trailer.key}`} target="_blank"> */}
-                  <img
-                    src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
-                    alt={movie.trailer.name}
-                    onClick={this.handleTrailerThumbClick.bind(this)}
-                  />
-                {/* </a> */}
+                  <div className="Card card">
+                    <div className="card-image">
+                      <figure className="image">
+                        <img
+                          src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                          alt={movie.trailer.name}
+                          onClick={this.handleTrailerThumbClick.bind(this)}
+                        />
+                      </figure>
+                    </div>
+                  </div>
               </div>
               <div className="column is-two-thirds">
                 <h4 className="title is-4">Featured Cast</h4>
