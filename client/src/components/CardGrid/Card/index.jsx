@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { tmdbImgUrl } from '../../../helpers'
 import missingAvatar from './images/missingAvatar.png'
@@ -12,24 +13,33 @@ const Card = (props) => {
     "people": data.profile_path ? tmdbImgUrl(data.profile_path) : missingAvatar
   }[type]
   
+  const card = (
+    <div className="card">
+      <div className="card-image">
+        <figure className="image">
+            <img src={imgPath} alt={label} />
+        </figure>
+      </div>
+      {showLabel && (
+        <div className="card-content">
+          <div className="content">
+            {label}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+
   return (
     <Link className="Card" to={`/${type}/${data.id}`}>
-      <div className="card">
-        <div className="card-image">
-          <figure className="image">
-              <img src={imgPath} alt={label} />
-          </figure>
-        </div>
-        {showLabel && (
-          <div className="card-content">
-            <div className="content">
-              {label}
-            </div>
-          </div>
-        )}
-      </div>
+      {card}
     </Link>
   )
 }
-//  {showLabel ? label : null}
+
+Card.propTypes = {
+  type: PropTypes.string,
+  
+}
+
 export default Card

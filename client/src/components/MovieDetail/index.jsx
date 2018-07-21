@@ -9,6 +9,8 @@ import Score from '../Score'
 import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -87,6 +89,7 @@ class MovieDetail extends React.Component {
                           alt={movie.trailer.name}
                           onClick={this.handleTrailerThumbClick.bind(this)}
                         />
+                        <FontAwesomeIcon icon={faYoutube} />
                       </figure>
                     </div>
                   </div>
