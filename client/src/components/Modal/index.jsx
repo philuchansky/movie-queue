@@ -20,7 +20,7 @@ const Modal = (props) => {
                 <div className="trailer">
                   <iframe frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen
                     title={modal.title}
-                    src={`https://www.youtube.com/embed/${modal.content}`}
+                    src={`https://www.youtube.com/embed/${modal.content}?autoplay=1`}
                   ></iframe>
                 </div>
               )}

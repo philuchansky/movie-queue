@@ -80,7 +80,7 @@ class MovieDetail extends React.Component {
             </div>
             <div className="columns">
               <div className="column is-one-third">
-                <h4 className="title is-4"><FontAwesomeIcon icon={faYoutube} /> Trailer</h4>
+                <h4 className="title is-4">Watch The Trailer</h4>
                   <div className="trailer Card card" onClick={this.handleTrailerThumbClick.bind(this)}>
                     <div className="card-image">
                       <figure className="image">

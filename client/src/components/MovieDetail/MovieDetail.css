@@ -30,12 +30,12 @@
   left: 50%;
   color: #FFF;
   opacity: .75;
-  font-size: 75px;
+  font-size: 65px;
   transform: translate(-50%, -50%);
   transition: all .5s;
 }
 
 .trailer.card:hover svg {
   opacity: 1;
-  font-size: 85px;
+  font-size: 72px;
 }
