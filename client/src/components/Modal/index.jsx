@@ -18,7 +18,10 @@ const Modal = (props) => {
               )}
               {modal.type === 'trailer' && (
                 <div className="trailer">
-                  <iframe src={`https://www.youtube.com/embed/${modal.content}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  <iframe frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen
+                    title={modal.title}
+                    src={`https://www.youtube.com/embed/${modal.content}`}
+                  ></iframe>
                 </div>
               )}
         </div>
