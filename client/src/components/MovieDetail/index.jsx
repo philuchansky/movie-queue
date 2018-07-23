@@ -11,6 +11,7 @@ import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -79,17 +80,15 @@ class MovieDetail extends React.Component {
             </div>
             <div className="columns">
               <div className="column is-one-third">
-                <h4 className="title is-4">Watch The Trailer</h4>
-                {/* <a href={`http://youtube.com/watch?v=${movie.trailer.key}`} target="_blank"> */}
-                  <div className="Card card">
+                <h4 className="title is-4"><FontAwesomeIcon icon={faYoutube} /> Trailer</h4>
+                  <div className="trailer Card card" onClick={this.handleTrailerThumbClick.bind(this)}>
                     <div className="card-image">
                       <figure className="image">
                         <img
                           src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
                           alt={movie.trailer.name}
-                          onClick={this.handleTrailerThumbClick.bind(this)}
                         />
-                        <FontAwesomeIcon icon={faYoutube} />
+                        <FontAwesomeIcon icon={faPlayCircle} />
                       </figure>
                     </div>
                   </div>
