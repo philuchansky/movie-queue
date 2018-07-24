@@ -44,11 +44,6 @@ class MovieDetail extends React.Component {
           <Fragment>
             <div className="columns">
               <div className="column is-one-quarter">
-                {/* <img
-                  src={tmdbImgUrl(movie.poster_path, 'large')}
-                  alt={movie.title}
-                  onClick={this.handlePosterClick.bind(this)}
-                /> */}
                 <PosterCard movie={movie} />
               </div>
               <div className="column is-three-quarters">
