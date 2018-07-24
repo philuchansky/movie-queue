@@ -4,7 +4,7 @@ import { openModalTrailer } from '../../actions/modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 
-const handleModalTrailerClick = (actionDispatcher, movie) => {
+const handleTrailerCardClick = (actionDispatcher, movie) => {
   actionDispatcher(movie.title, movie.trailer.key)
 }
 
@@ -12,7 +12,7 @@ const TrailerCard = (props) => {
   const { movie, openModalTrailer } = props
   return (
     <div className="trailer Card card"
-      onClick={handleModalTrailerClick.bind(null, openModalTrailer, movie)}
+      onClick={handleTrailerCardClick.bind(null, openModalTrailer, movie)}
     >
       <div className="card-image">
         <figure className="image">

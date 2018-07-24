@@ -1,10 +1,18 @@
-import React from "react"
+import React from 'react'
+import { connect } from 'react-redux'
+import { openModalImage } from '../../actions/modal'
 import { tmdbImgUrl } from '../../helpers'
 
+const handlePosterCardClick = (actionDispatcher, movie) => {
+  actionDispatcher(movie.title, movie.poster_path)
+}
+
 const PosterCard = (props) => {
-  const { movie } = props
+  const { movie, openModalImage } = props
   return (
-    <div className="poster Card card">
+    <div className="poster Card card"
+      onClick={handlePosterCardClick.bind(null, openModalImage, movie)}
+    >
       <div className="card-image">
         <figure className="image">
           <img
@@ -17,4 +25,4 @@ const PosterCard = (props) => {
   )
 }
 
-export default PosterCard
+export default connect(null, { openModalImage })(PosterCard)
