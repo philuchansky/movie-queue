@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { openModalImage, openModalTrailer } from '../../actions/modal'
+import { openModalImage } from '../../actions/modal'
 import { joinBy, tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
@@ -9,9 +9,7 @@ import Score from '../Score'
 import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faYoutube } from '@fortawesome/free-brands-svg-icons'
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import TrailerCard from './TrailerCard'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -81,17 +79,7 @@ class MovieDetail extends React.Component {
             <div className="columns">
               <div className="column is-one-third">
                 <h4 className="title is-4">Watch The Trailer</h4>
-                  <div className="trailer Card card" onClick={this.handleTrailerThumbClick.bind(this)}>
-                    <div className="card-image">
-                      <figure className="image">
-                        <img
-                          src={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
-                          alt={movie.trailer.name}
-                        />
-                        <FontAwesomeIcon icon={faPlayCircle} />
-                      </figure>
-                    </div>
-                  </div>
+                <TrailerCard movie={movie} />
               </div>
               <div className="column is-two-thirds">
                 <h4 className="title is-4">Featured Cast</h4>
@@ -108,4 +96,4 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movieDetail, auth }) => ({ movieDetail, auth })
-export default connect(mapStateToProps, { getMovie, openModalImage, openModalTrailer })(MovieDetail)
+export default connect(mapStateToProps, { getMovie, openModalImage })(MovieDetail)
