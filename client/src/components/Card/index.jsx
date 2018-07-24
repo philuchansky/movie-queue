@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { tmdbImgUrl } from '../../../helpers'
+import { tmdbImgUrl } from '../../helpers'
 import missingAvatar from './images/missingAvatar.png'
 import './Card.css'
 

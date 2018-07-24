@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { chunk } from 'lodash'
-import Card from './Card'
+import Card from '../Card'
 
 const columnMappings = {
   2: "is-one-half",
