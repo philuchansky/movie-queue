@@ -2,13 +2,14 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
 import { openModalImage } from '../../actions/modal'
-import { joinBy, tmdbImgUrl, formattedDate, getYear, currency } from '../../helpers'
+import { joinBy, formattedDate, getYear, currency } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
 import Score from '../Score'
 import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
+import PosterCard from './PosterCard'
 import TrailerCard from './TrailerCard'
 import './MovieDetail.css'
 
@@ -43,11 +44,12 @@ class MovieDetail extends React.Component {
           <Fragment>
             <div className="columns">
               <div className="column is-one-quarter">
-                <img
+                {/* <img
                   src={tmdbImgUrl(movie.poster_path, 'large')}
                   alt={movie.title}
                   onClick={this.handlePosterClick.bind(this)}
-                />
+                /> */}
+                <PosterCard movie={movie} />
               </div>
               <div className="column is-three-quarters">
                 <h3 className="title is-3">
