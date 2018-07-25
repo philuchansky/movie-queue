@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { chunk } from 'lodash'
+import { tmdbImgUrl } from '../../helpers'
 import Card from '../Card'
+import missingAvatar from './images/missingAvatar.png'
 
 const columnMappings = {
   2: "is-one-half",
@@ -10,15 +12,25 @@ const columnMappings = {
   5: "is-one-fifth"
 }
 
+// const imgPath = {
+//   "movies": data.poster_path ? tmdbImgUrl(data.poster_path) : '',
+//   "people": data.profile_path ? tmdbImgUrl(data.profile_path) : missingAvatar
+// }[type]
+
 const CardGrid = (props) => {
-  const { data, type, max, columns, showLabels } = props
+  const { type, data, max, columns, label, imgField } = props
   return (
     <div className="CardGrid">
       {chunk(data.slice(0, max || columns * 2 || 10), columns || 5).map((row, rowIdx) => (
         <div key={rowIdx} className="columns">
           {row.map((el, colIdx) => (
             <div key={colIdx} className={`column ${columnMappings[columns] || 'is-one-fifth'}`}>
-              <Card data={el} showLabel={showLabels} type={type} />
+              <Card
+                data={el}
+                label={el[label]}
+                linkTo={`/${type}/${el.id}`}
+                imgSrc={el[imgField] ? tmdbImgUrl(el[imgField]) : missingAvatar}
+              />
             </div>
           ))}
         </div>
@@ -29,7 +41,7 @@ const CardGrid = (props) => {
 
 CardGrid.propTypes = {
   data: PropTypes.array.isRequired,
-  type: PropTypes.oneOf(['movies', 'people']).isRequired,
+  type: PropTypes.string,
   showLabels: PropTypes.bool
 }
 

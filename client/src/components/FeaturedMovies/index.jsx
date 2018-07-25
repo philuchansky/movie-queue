@@ -14,7 +14,7 @@ class FeaturedMovies extends React.Component {
     return (
       <div className="FeaturedMovies">
         <h1 className="title">New Releases</h1>
-        <CardGrid data={movies} type="movies" />
+        <CardGrid data={movies} type="movies" imgField="poster_path" />
       </div>
     )
   }

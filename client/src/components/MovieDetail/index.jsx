@@ -80,11 +80,11 @@ class MovieDetail extends React.Component {
               </div>
               <div className="column is-two-thirds">
                 <h4 className="title is-4">Featured Cast</h4>
-                <CardGrid data={movie.cast} type="people" showLabels />
+                <CardGrid data={movie.cast} type="people" imgField="profile_path" label="name" />
               </div>
             </div>
             <h3 className="title is-3">You Might Also Like</h3>
-            <CardGrid data={movie.recommendations} type="movies" />
+            <CardGrid data={movie.recommendations} type="movies" imgField="poster_path" />
           </Fragment>
         )}
       </div>
