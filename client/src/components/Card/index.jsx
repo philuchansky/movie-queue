@@ -9,9 +9,9 @@ const missingImages = {
 }
 
 const Card = (props) => {
-  const { imgSrc, label, linkTo, type } = props
+  const { imgSrc, label, linkTo, type, onClick } = props
   const card = (
-    <div className="Card">
+    <div className="Card" onClick={onClick || null}>
       <div className="card">
         <div className="card-image">
           <figure className="image">
@@ -38,41 +38,8 @@ Card.propTypes = {
   imgSrc: PropTypes.string,
   label: PropTypes.string,
   linkTo: PropTypes.string,
-  type: PropTypes.oneOf(['movies', 'people'])
+  type: PropTypes.oneOf(['movies', 'people']),
+  onClick: PropTypes.func
 }
-
-// const Card = (props) => {
-//   const { data, type, showLabel } = props
-//   const label = data.title || data.name
-//   const imgPath = {
-//     "movies": data.poster_path ? tmdbImgUrl(data.poster_path) : '',
-//     "people": data.profile_path ? tmdbImgUrl(data.profile_path) : missingAvatar
-//   }[type]
-  
-//   const card = (
-//     <div className="card">
-//       <div className="card-image">
-//         <figure className="image">
-//             <img src={imgPath} alt={label} />
-//         </figure>
-//       </div>
-//       {showLabel && (
-//         <div className="card-content">
-//           <div className="content">
-//             {label}
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   )
-
-//   return (
-//     <Link className="Card" to={`/${type}/${data.id}`}>
-//       {card}
-//     </Link>
-//   )
-// }
-
-
 
 export default Card
