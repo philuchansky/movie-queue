@@ -1,21 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import missingPeople from './images/missing-people.png'
 import './Card.css'
 
-const Card = (props) => {
-  const { imgSrc, label, linkTo } = props
+const missingImages = {
+  people: missingPeople
+}
 
+const Card = (props) => {
+  const { imgSrc, label, linkTo, type } = props
   const card = (
     <div className="Card">
       <div className="card">
-        {imgSrc && (
-          <div className="card-image">
-            <figure className="image">
-              <img src={imgSrc} alt={label || imgSrc} />
-            </figure>
-          </div>
-        )}
+        <div className="card-image">
+          <figure className="image">
+            <img src={imgSrc || missingImages[type]} alt={label || imgSrc} />
+          </figure>
+        </div>
         {label && (
           <div className="card-content">
             <div className="content">
@@ -35,7 +37,8 @@ const Card = (props) => {
 Card.propTypes = {
   imgSrc: PropTypes.string,
   label: PropTypes.string,
-  linkTo: PropTypes.string
+  linkTo: PropTypes.string,
+  type: PropTypes.oneOf(['movies', 'people'])
 }
 
 // const Card = (props) => {
