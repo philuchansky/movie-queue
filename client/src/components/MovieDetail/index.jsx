@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { getMovie } from '../../actions/movies'
-import { openModalImage } from '../../actions/modal'
+import { openModalImage, openModalTrailer } from '../../actions/modal'
 import { joinBy, formattedDate, getYear, currency, tmdbImgUrl } from '../../helpers'
 import MovieMeta from './MovieMeta'
 import QueueButton from '../QueueButton'
@@ -10,7 +10,6 @@ import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
 import Card from '../Card'
-import TrailerCard from './TrailerCard'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -79,7 +78,10 @@ class MovieDetail extends React.Component {
             <div className="columns">
               <div className="column is-one-third">
                 <h4 className="title is-4">Watch The Trailer</h4>
-                <TrailerCard movie={movie} />
+                <Card
+                  imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                  onClick={this.handleTrailerThumbClick.bind(this)}
+                />
               </div>
               <div className="column is-two-thirds">
                 <h4 className="title is-4">Featured Cast</h4>
@@ -96,4 +98,8 @@ class MovieDetail extends React.Component {
 }
 
 const mapStateToProps = ({ movieDetail, auth }) => ({ movieDetail, auth })
-export default connect(mapStateToProps, { getMovie, openModalImage })(MovieDetail)
+export default connect(mapStateToProps, {
+  getMovie,
+  openModalImage,
+  openModalTrailer
+})(MovieDetail)
