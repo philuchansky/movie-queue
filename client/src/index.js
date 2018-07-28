@@ -17,10 +17,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
 import {
   faEnvelope, faLock, faGlobe,
-  faPlayCircle, faFilm, faUser
+  faPlayCircle, faFilm, faUser,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faImdb, faEnvelope, faLock, faGlobe, faPlayCircle, faFilm, faUser)
+library.add(faImdb, faEnvelope, faLock, faGlobe, faPlayCircle, faFilm, faUser, faSpinner)
 
 const store = createStore(
   rootReducer,
