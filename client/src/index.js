@@ -25,7 +25,9 @@ import {
   faFilm,
   faUser
 } from '@fortawesome/free-solid-svg-icons'
-library.add(faImdb)
+
+library.add(faImdb, faEnvelope, faLock, faGlobe, faPlayCircle, faFilm, faUser)
+
 
 
 const store = createStore(

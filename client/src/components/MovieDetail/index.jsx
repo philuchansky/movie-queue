@@ -10,7 +10,6 @@ import FeaturedCrew from './FeaturedCrew'
 import ExternalLinks from './ExternalLinks'
 import CardGrid from '../CardGrid'
 import Card from '../Card'
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import './MovieDetail.css'
 
 class MovieDetail extends React.Component {
@@ -82,7 +81,7 @@ class MovieDetail extends React.Component {
                 <Card
                   imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
                   onClick={this.handleTrailerThumbClick.bind(this)}
-                  icon={faPlayCircle}
+                  icon={['fas', 'play-circle']}
                 />
               </div>
               <div className="column is-two-thirds">

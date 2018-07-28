@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { tmdbImgUrl } from '../../helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
 
 const getReleaseYear = (date) => new Date(date).getFullYear()
 
@@ -15,7 +14,7 @@ const Results = (props) => {
           <span className="panel-icon">
             {item.poster_path
               ? <img src={tmdbImgUrl(item.poster_path, 'tiny')} alt={item.title} />
-              : <FontAwesomeIcon icon={faFilm} />
+              : <FontAwesomeIcon icon={['fas', 'film']} />
             }
           </span>
           {item.title} ({getReleaseYear(item.release_date)})

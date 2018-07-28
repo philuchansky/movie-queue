@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { logOut } from '../../actions/auth'
 import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
 import './NavBar.css'
 
 class NavBar extends React.Component {
@@ -27,7 +26,7 @@ class NavBar extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link className="logo navbar-item" to="/">
-              <FontAwesomeIcon icon={faFilm} /> Queue
+              <FontAwesomeIcon icon={['fas', 'film']} /> Queue
             </Link>
             <a role="button" aria-label="menu" aria-expanded="false"
               onClick={this.toggleActive.bind(this)}
