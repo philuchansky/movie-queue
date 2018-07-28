@@ -1,5 +1,4 @@
 require('dotenv').config()
-const { PORT, MONGODB_URI } = process.env
 const
   express = require('express'),
   app = express(),
@@ -7,7 +6,8 @@ const
   logger = require('morgan'),
   moviesRouter = require('./routes/movies.js'),
   usersRouter = require('./routes/users.js'),
-  queueRouter = require('./routes/queue.js')
+  queueRouter = require('./routes/queue.js'),
+  { PORT, MONGODB_URI, THROTTLE_TIME } = process.env
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
   console.log(err || "Connected to MongoDB")
@@ -15,6 +15,8 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 
 app.use(logger('dev'))
 app.use(express.json())
+
+if(THROTTLE_TIME) app.use((req, res, next) => setTimeout(next, Number(THROTTLE_TIME)))
 
 app.get('/', (req, res) => {
   res.json({ message: "root" })
