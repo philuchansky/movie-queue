@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute'
 import Hero from './components/Hero'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
@@ -23,7 +24,7 @@ class App extends Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={LogIn} />
               <Route path="/movies/:id" component={MovieDetail} />
-              <Route path="/queue" component={Queue} />
+              <ProtectedRoute path="/queue" component={Queue} />
               <Route path="/" component={FeaturedMovies} />
             </Switch>
           </div>

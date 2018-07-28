@@ -1,0 +1,8 @@
+/* .ProtectedRoute .loading.modal .modal-content {
+  text-align: center
+} */
+
+.ProtectedRoute .loading.modal svg {
+  color: #FFF;
+  font-size: 70px;
+}
