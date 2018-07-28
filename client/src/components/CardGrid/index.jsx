@@ -12,7 +12,7 @@ const columnMappings = {
 }
 
 const CardGrid = (props) => {
-  const { type, data, max, columns, label, imgField } = props
+  const { type, data, max, columns, imgField, labelField } = props
   return (
     <div className="CardGrid">
       {chunk(data.slice(0, max || columns * 2 || 10), columns || 5).map((row, rowIdx) => (
@@ -20,10 +20,10 @@ const CardGrid = (props) => {
           {row.map((el, colIdx) => (
             <div key={colIdx} className={`column ${columnMappings[columns] || 'is-one-fifth'}`}>
               <Card
-                label={el[label]}
                 linkTo={`/${type}/${el.id}`}
-                imgSrc={el[imgField] && tmdbImgUrl(el[imgField])}
                 type={type}
+                imgSrc={el[imgField] ? tmdbImgUrl(el[imgField]) : null}
+                label={el[labelField] || null}
               />
             </div>
           ))}
@@ -36,7 +36,9 @@ const CardGrid = (props) => {
 CardGrid.propTypes = {
   data: PropTypes.array.isRequired,
   type: PropTypes.oneOf(['movies', 'people']),
-  showLabels: PropTypes.bool
+  showLabels: PropTypes.bool,
+  imgField: PropTypes.string,
+  labelField: PropTypes.string
 }
 
 CardGrid.defaultProps = {
