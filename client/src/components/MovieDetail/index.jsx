@@ -98,7 +98,7 @@ class MovieDetail extends React.Component {
             </div>
             <div className="section">
               <h3 className="title is-3">Similar to {movie.title}</h3>
-              <CardGrid data={movie.recommendations} type="movies" imgField="poster_path" />
+              <CardGrid data={movie.similarMovies} type="movies" imgField="poster_path" />
             </div>
             <div className="section">
               <h3 className="title is-3">You Might Also Like</h3>
