@@ -8,7 +8,7 @@
   color: #444;
 }
 
-.external-links a.imdb {
+.MovieDetail .external-links a.imdb {
   color: #f3ce13;
 }
 
@@ -18,24 +18,4 @@
 
 .MovieDetail .FeaturedCrew li {
   margin-bottom: .75rem;
-}
-
-.trailer.card {
-  cursor: pointer;
-}
-
-.trailer.card svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: #FFF;
-  opacity: .75;
-  font-size: 65px;
-  transform: translate(-50%, -50%);
-  transition: all .5s;
-}
-
-.trailer.card:hover svg {
-  opacity: 1;
-  font-size: 72px;
 }

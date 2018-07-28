@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import missingPeople from './images/missing-people.png'
 import './Card.css'
 
@@ -9,13 +10,14 @@ const missingImages = {
 }
 
 const Card = (props) => {
-  const { imgSrc, label, linkTo, type, onClick } = props
+  const { imgSrc, label, linkTo, type, onClick, icon } = props
   const card = (
     <div className="Card" onClick={onClick || null}>
       <div className="card">
         <div className="card-image">
           <figure className="image">
             <img src={imgSrc || missingImages[type]} alt={label || imgSrc} />
+            {icon && <FontAwesomeIcon icon={icon} />}
           </figure>
         </div>
         {label && (

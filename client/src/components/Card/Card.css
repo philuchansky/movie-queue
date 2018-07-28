@@ -1,6 +1,7 @@
 .Card {
   display: block;
   transition: all .5s;
+  cursor: pointer;
 }
 
 .Card:hover {
@@ -15,4 +16,20 @@
 .Card .card-content .content {
   text-align: center;
   font-size: .85rem;
+}
+
+.Card svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #FFF;
+  opacity: .75;
+  font-size: 65px;
+  transform: translate(-50%, -50%);
+  transition: all .5s;
+}
+
+.Card:hover svg {
+  opacity: 1;
+  font-size: 72px;
 }

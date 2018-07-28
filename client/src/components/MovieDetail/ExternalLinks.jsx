@@ -11,7 +11,7 @@ const ExternalLinks = (props) => {
         <a className="external-link-icon imdb" target="_blank"
           href={`https://www.imdb.com/title/${movie.imdb_id}`}
         >
-          <FontAwesomeIcon icon={faImdb} />
+          <FontAwesomeIcon icon={'imdb'} />
         </a>
       )}
       {movie.homepage && (
