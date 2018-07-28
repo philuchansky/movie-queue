@@ -14,21 +14,13 @@ import registerServiceWorker from './registerServiceWorker'
 import 'bulma/css/bulma.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { faImdb } from '@fortawesome/free-brands-svg-icons'
 import {
-  faImdb
-} from '@fortawesome/free-brands-svg-icons'
-import {
-  faEnvelope,
-  faLock,
-  faGlobe,
-  faPlayCircle,
-  faFilm,
-  faUser
+  faEnvelope, faLock, faGlobe,
+  faPlayCircle, faFilm, faUser
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faImdb, faEnvelope, faLock, faGlobe, faPlayCircle, faFilm, faUser)
-
-
 
 const store = createStore(
   rootReducer,
