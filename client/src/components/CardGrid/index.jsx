@@ -12,7 +12,7 @@ const columnMappings = {
 }
 
 const CardGrid = (props) => {
-  const { type, data, max, columns, imgField, labelField } = props
+  const { data, type, imgField, labelField, columns, max } = props
   return (
     <div className="CardGrid">
       {chunk(data.slice(0, max), columns).map((row, rowIdx) => (
