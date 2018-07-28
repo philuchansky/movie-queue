@@ -38,11 +38,13 @@ CardGrid.propTypes = {
   type: PropTypes.oneOf(['movies', 'people']),
   showLabels: PropTypes.bool,
   imgField: PropTypes.string,
-  labelField: PropTypes.string
+  labelField: PropTypes.string,
+  columns: PropTypes.oneOf([2, 3, 4, 5])
 }
 
 CardGrid.defaultProps = {
-  showLabels: false
+  showLabels: false,
+  columns: 5
 }
 
 export default CardGrid
