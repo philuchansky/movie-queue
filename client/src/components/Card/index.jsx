@@ -41,7 +41,11 @@ Card.propTypes = {
   label: PropTypes.string,
   linkTo: PropTypes.string,
   type: PropTypes.oneOf(['movies', 'people']),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  icon: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.object
+  ])
 }
 
 export default Card
