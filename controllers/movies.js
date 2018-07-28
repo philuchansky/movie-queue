@@ -13,13 +13,17 @@ module.exports = {
 
   show: (req, res) => {
     const getMovie = apiClient.get(`/movie/${req.params.id}?api_key=${TMDB_API_KEY}`)
+    const getSimilarMovies = apiClient.get(`/movie/${req.params.id}/similar?api_key=${TMDB_API_KEY}`)
     const getMovieRecommendations = apiClient.get(`/movie/${req.params.id}/recommendations?api_key=${TMDB_API_KEY}`)
     const getMovieCredits = apiClient.get(`/movie/${req.params.id}/credits?api_key=${TMDB_API_KEY}`)
     const getMovieVideos = apiClient.get(`/movie/${req.params.id}/videos?api_key=${TMDB_API_KEY}`)
 
-    Promise.all([getMovie, getMovieRecommendations, getMovieCredits, getMovieVideos])
-    .then(([ movie, recommendations, credits, videos ]) => {
+    Promise.all([getMovie, getSimilarMovies, getMovieRecommendations, getMovieCredits, getMovieVideos])
+    .then(([ movie, similarMovies, recommendations, credits, videos ]) => {
       
+      const formattedSimilarMovies = similarMovies.data.results.map(({ title, id, poster_path }) => (
+        { title, id, poster_path }
+      ))
       const formattedRecommendations = recommendations.data.results.map(({ title, id, poster_path }) => (
         { title, id, poster_path }
       ))
@@ -27,6 +31,7 @@ module.exports = {
       const trailer = videos.data.results.find(v => v.type === "Trailer")
       res.json({
         ...movie.data,
+        similarMovies: formattedSimilarMovies,
         recommendations: formattedRecommendations,
         cast: cast.slice(0, 5),
         crew: crew.slice(0, 5),
