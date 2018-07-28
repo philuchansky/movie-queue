@@ -75,27 +75,35 @@ class MovieDetail extends React.Component {
                 <p className="overview"><strong>Overview:</strong> {movie.overview}</p>
               </div>
             </div>
-            <div className="columns">
-              <div className="column is-one-third">
-                <h4 className="title is-4">Watch The Trailer</h4>
-                <Card
-                  imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
-                  onClick={this.handleTrailerThumbClick.bind(this)}
-                  icon={['fas', 'play-circle']}
-                />
-              </div>
-              <div className="column is-two-thirds">
-                <h4 className="title is-4">Featured Cast</h4>
-                <CardGrid
-                  data={movie.cast}
-                  type="people"
-                  imgField="profile_path"
-                  labelField="name"
-                />
+            <div className="section">
+              <div className="columns">
+                <div className="column is-one-third">
+                  <h4 className="title is-4">Watch The Trailer</h4>
+                  <Card
+                    imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                    onClick={this.handleTrailerThumbClick.bind(this)}
+                    icon={['fas', 'play-circle']}
+                  />
+                </div>
+                <div className="column is-two-thirds">
+                  <h4 className="title is-4">Featured Cast</h4>
+                  <CardGrid
+                    data={movie.cast}
+                    type="people"
+                    imgField="profile_path"
+                    labelField="name"
+                  />
+                </div>
               </div>
             </div>
-            <h3 className="title is-3">You Might Also Like</h3>
-            <CardGrid data={movie.recommendations} type="movies" imgField="poster_path" />
+            <div className="section">
+              <h3 className="title is-3">Similar to {movie.title}</h3>
+              <CardGrid data={movie.recommendations} type="movies" imgField="poster_path" />
+            </div>
+            <div className="section">
+              <h3 className="title is-3">You Might Also Like</h3>
+              <CardGrid data={movie.recommendations} type="movies" imgField="poster_path" />
+            </div>
           </Fragment>
         )}
       </div>
