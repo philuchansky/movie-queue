@@ -9,6 +9,7 @@ import FeaturedMovies from './components/FeaturedMovies'
 import MovieDetail from './components/MovieDetail'
 import Queue from './components/Queue'
 import Modal from './components/Modal'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
           </div>
         </div>
         <Modal />
+        <Footer />
       </div>
     );
   }
