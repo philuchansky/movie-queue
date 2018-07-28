@@ -14,12 +14,14 @@ const Card = (props) => {
   const card = (
     <div className="Card" onClick={onClick || null}>
       <div className="card">
-        <div className="card-image">
-          <figure className="image">
-            <img src={imgSrc || missingImages[type]} alt={label || imgSrc} />
-            {icon && <FontAwesomeIcon icon={icon} />}
-          </figure>
-        </div>
+        {(type || imgSrc) && (
+          <div className="card-image">
+            <figure className="image">
+              <img src={imgSrc || missingImages[type]} alt={label || imgSrc} />
+              {icon && <FontAwesomeIcon icon={icon} />}
+            </figure>
+          </div>
+        )}
         {label && (
           <div className="card-content">
             <div className="content">
