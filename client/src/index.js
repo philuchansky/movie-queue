@@ -12,6 +12,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import 'bulma/css/bulma.css'
+import './index.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'

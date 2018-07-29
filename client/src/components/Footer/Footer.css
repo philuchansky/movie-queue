@@ -1,3 +1,10 @@
+.Footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .Footer .poweredByTmdb {
   width: 90px;
   height: 60px;
