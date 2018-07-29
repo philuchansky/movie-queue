@@ -5,7 +5,12 @@
   left: 0;
 }
 
+.Footer .copyright {
+  margin-right: 1rem;
+}
+
 .Footer .poweredByTmdb {
-  width: 90px;
+  width: 70px;
   height: 60px;
+  vertical-align: middle;
 }
