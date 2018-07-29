@@ -14,7 +14,7 @@ class Queue extends React.Component {
     let formattedQueue = movies.map(queueItem => ({ ...queueItem, id: queueItem.TMDB_id }))
     return (
       <div className="Queue">
-        <CardGrid data={formattedQueue} type="movies" />
+        <CardGrid data={formattedQueue} type="movies" imgField="poster_path" />
       </div>
     )
   }
