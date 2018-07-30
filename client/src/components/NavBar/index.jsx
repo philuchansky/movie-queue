@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { logOut } from '../../actions/auth'
 import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SearchBar from '../SearchBar'
 import './NavBar.css'
 
 class NavBar extends React.Component {
@@ -19,7 +20,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { auth: { currentUser } } = this.props
+    const { auth: { currentUser }, location: { pathname } } = this.props
     const { active } = this.state
     return (
       <nav className="NavBar navbar is-warning" aria-label="main navigation">
@@ -39,6 +40,11 @@ class NavBar extends React.Component {
           </div>
           <div className={`navbar-menu ${active ? 'is-active' : '' }`}>
             <div className="navbar-end">
+              {pathname !== "/" && (
+                <span className="navbar-item">
+                 <SearchBar />
+                </span>
+              )}
               <Link to="/" className="navbar-item">Home</Link>
               {currentUser
                 ? (
