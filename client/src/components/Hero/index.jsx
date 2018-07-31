@@ -6,7 +6,7 @@ import SearchBar from '../SearchBar'
 import './Hero.css'
 
 const Hero = (props) => {
-  const { featuredMovies: { loading, movies } } = props
+  const { featuredMovies: { movies } } = props
   const randomMovie = movies[Math.floor(Math.random() * movies.length)]
   const heroStyles = {
     backgroundImage: randomMovie
@@ -31,7 +31,7 @@ const Hero = (props) => {
           <h1 className="title">
             Start Building Your Queue
           </h1>
-          <SearchBar placeholder="Mission Impossible" />
+          <SearchBar placeholder={randomMovie ? randomMovie.title : "Search"} />
         </div>
       </div>
     </section>
