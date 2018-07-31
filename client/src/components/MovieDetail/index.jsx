@@ -82,7 +82,7 @@ class MovieDetail extends React.Component {
                     <Fragment>
                       <h4 className="title is-4">Watch The Trailer</h4>
                       <Card
-                        imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                        imgSrc={tmdbImgUrl(movie.backdrop_path)}
                         onClick={this.handleTrailerThumbClick.bind(this)}
                         icon={['fas', 'play-circle']}
                       />
