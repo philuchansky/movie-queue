@@ -11,11 +11,16 @@ const Hero = (props) => {
   const heroStyles = {
     backgroundImage: randomMovie
       ? (`
-        linear-gradient(rgba(255, 221, 87, .85), rgba(255, 221, 87, .85)),
+        linear-gradient(
+          rgba(255, 221, 87, 1),
+          rgba(255, 221, 87, .85),
+          rgba(255, 221, 87, .85),
+          rgba(255, 221, 87, .85)
+        ),
         url('${tmdbImgUrl(randomMovie.backdrop_path, 'huge')}')
       `)
       : (
-        `linear-gradient(rgba(255, 221, 87, .85), rgba(255, 221, 87, .85))`
+        `linear-gradient(rgba(255, 221, 87, 1), rgba(255, 221, 87, 1))`
       )
   }
   return (
@@ -28,7 +33,7 @@ const Hero = (props) => {
       </div>
       <div className="hero-body">
         <div className="container has-text-centered">
-          <h1 className="title">
+          <h1 className="title is-1">
             Start Building Your Queue
           </h1>
           <SearchBar placeholder={randomMovie ? randomMovie.title : "Search"} />
