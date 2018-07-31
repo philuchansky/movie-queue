@@ -12,6 +12,7 @@ export function tmdbImgUrl(posterPath, size = 'medium') {
     small: 'w342/',
     medium: 'w500/',
     large: 'w780/',
+    huge: 'w1280/',
     original: 'original'
   }
   return baseImgUrl + sizes[size] + posterPath

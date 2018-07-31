@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { tmdbImgUrl } from '../../helpers'
 import NavBar from '../NavBar'
 import SearchBar from '../SearchBar'
 import './Hero.css'
@@ -7,8 +8,10 @@ import './Hero.css'
 const Hero = (props) => {
   return (
     <section
-      className="hero is-warning is-medium"
-      style={{background: 'linear-gradient(rgba(255, 221, 87, .45), rgba(255, 221, 87, .45))'}}
+      className="Hero hero is-warning is-medium"
+      style={props.featuredMovies.movies[0] && {
+        backgroundImage: `linear-gradient(rgba(255, 221, 87, .45), rgba(255, 221, 87, .45)), url('${tmdbImgUrl(props.featuredMovies.movies[0].backdrop_path, 'huge')}')`
+      }}
     >
       <div className="hero-head">
         <NavBar />
@@ -25,4 +28,5 @@ const Hero = (props) => {
   )
 }
 
-export default Hero
+const mapStateToProps = ({ featuredMovies }) => ({ featuredMovies })
+export default connect(mapStateToProps)(Hero)
