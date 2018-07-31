@@ -2,12 +2,18 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 const Form = (props) => {
-  const { handleSubmit } = props
+  const { handleSubmit, placeholder } = props
   return (
     <form onSubmit={handleSubmit}>
       <div className="field has-addons">
         <div className="control">
-          <Field component="input" type="text" className="input" name="term" placeholder="Mission Impossible" />
+          <Field
+            type="text"
+            className="input"
+            name="term"
+            component="input"
+            placeholder={placeholder}
+          />
         </div>
         <div className="control">
           <button className="button is-info">

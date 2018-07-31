@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { searchMovies, clearSearchResults } from '../../actions/movies'
 import { reset } from 'redux-form'
@@ -21,14 +22,25 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { searchResults, reset: clearForm } = this.props
+    const { searchResults, reset: clearForm, placeholder } = this.props
     return (
       <div className="SearchBar">
-        <Form onSubmit={this.onFormSubmit.bind(this)} onChange={this.onFormChange.bind(this)} />
+        <Form placeholder={placeholder}
+          onChange={this.onFormChange.bind(this)}
+          onSubmit={this.onFormSubmit.bind(this)}
+        />
         <Results onResultClick={clearForm.bind(this, 'search')} items={searchResults} />
       </div>
     )
   }
+}
+
+SearchBar.defaultProps = {
+  placeholder: "Search"
+}
+
+SearchBar.propTypes = {
+  placeholder: PropTypes.string
 }
 
 const mapStateToProps = ({ searchResults }) => ({ searchResults })

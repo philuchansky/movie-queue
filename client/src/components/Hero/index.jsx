@@ -13,7 +13,7 @@ const Hero = (props) => {
           <h1 className="title">
             Start Building Your Queue
           </h1>
-          <SearchBar />
+          <SearchBar placeholder="Mission Impossible" />
         </div>
       </div>
     </section>
