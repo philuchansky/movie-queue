@@ -5,7 +5,8 @@ import CardGrid from '../CardGrid'
 
 class FeaturedMovies extends React.Component {
   componentDidMount() {
-    this.props.getFeaturedMovies()
+    const { getFeaturedMovies, featuredMovies } = this.props
+    if(!featuredMovies.movies.length) getFeaturedMovies()
   }
 
   render() {
