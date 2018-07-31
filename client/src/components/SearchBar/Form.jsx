@@ -5,7 +5,7 @@ const Form = (props) => {
   const { handleSubmit, placeholder, showSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
-      <div className="field has-addons">
+      <div className={`field ${showSubmit && 'has-addons'}`}>
         <div className="control">
           <Field
             type="text"
