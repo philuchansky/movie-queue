@@ -6,12 +6,22 @@ import SearchBar from '../SearchBar'
 import './Hero.css'
 
 const Hero = (props) => {
+  const { featuredMovies: { loading, movies } } = props
+  const randomMovie = movies[Math.floor(Math.random() * movies.length)]
+  const heroStyles = {
+    backgroundImage: randomMovie
+      ? (`
+        linear-gradient(rgba(255, 221, 87, .85), rgba(255, 221, 87, .85)),
+        url('${tmdbImgUrl(randomMovie.backdrop_path, 'huge')}')
+      `)
+      : (
+        `linear-gradient(rgba(255, 221, 87, .85), rgba(255, 221, 87, .85))`
+      )
+  }
   return (
     <section
       className="Hero hero is-warning is-medium"
-      style={props.featuredMovies.movies[0] && {
-        backgroundImage: `linear-gradient(rgba(255, 221, 87, .45), rgba(255, 221, 87, .45)), url('${tmdbImgUrl(props.featuredMovies.movies[0].backdrop_path, 'huge')}')`
-      }}
+      style={heroStyles}
     >
       <div className="hero-head">
         <NavBar />
