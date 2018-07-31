@@ -78,12 +78,18 @@ class MovieDetail extends React.Component {
             <div className="section">
               <div className="columns">
                 <div className="column is-one-third">
-                  <h4 className="title is-4">Watch The Trailer</h4>
-                  <Card
-                    imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
-                    onClick={this.handleTrailerThumbClick.bind(this)}
-                    icon={['fas', 'play-circle']}
-                  />
+                  {movie.trailer ? (
+                    <Fragment>
+                      <h4 className="title is-4">Watch The Trailer</h4>
+                      <Card
+                        imgSrc={`http://img.youtube.com/vi/${movie.trailer.key}/mqdefault.jpg`}
+                        onClick={this.handleTrailerThumbClick.bind(this)}
+                        icon={['fas', 'play-circle']}
+                      />
+                    </Fragment>
+                  ) : (
+                    <h4 className="title is-4">No Trailer Available :(</h4>
+                  )}
                 </div>
                 <div className="column is-two-thirds">
                   <h4 className="title is-4">Featured Cast</h4>
