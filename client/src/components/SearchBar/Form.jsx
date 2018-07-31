@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 const Form = (props) => {
-  const { handleSubmit, placeholder } = props
+  const { handleSubmit, placeholder, showSubmit } = props
   return (
     <form onSubmit={handleSubmit}>
       <div className="field has-addons">
@@ -15,11 +15,13 @@ const Form = (props) => {
             placeholder={placeholder}
           />
         </div>
-        <div className="control">
-          <button className="button is-info">
-            Search
-          </button>
-        </div>
+        {showSubmit && (
+          <div className="control">
+            <button className="button is-info">
+              Search
+            </button>
+          </div>
+        )}
       </div>
     </form>
   )

@@ -42,7 +42,7 @@ class NavBar extends React.Component {
             <div className="navbar-end">
               {pathname !== "/" && (
                 <span className="navbar-item">
-                 <SearchBar />
+                  <SearchBar showSubmit={false} />
                 </span>
               )}
               <Link to="/" className="navbar-item">Home</Link>

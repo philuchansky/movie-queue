@@ -22,10 +22,12 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { searchResults, reset: clearForm, placeholder } = this.props
+    const { searchResults, reset: clearForm, placeholder, showSubmit } = this.props
     return (
       <div className="SearchBar">
-        <Form placeholder={placeholder}
+        <Form
+          placeholder={placeholder}
+          showSubmit={showSubmit}
           onChange={this.onFormChange.bind(this)}
           onSubmit={this.onFormSubmit.bind(this)}
         />
@@ -36,11 +38,13 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.defaultProps = {
-  placeholder: "Search"
+  placeholder: "Search",
+  showSubmit: true
 }
 
 SearchBar.propTypes = {
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  showSubmit: PropTypes.bool
 }
 
 const mapStateToProps = ({ searchResults }) => ({ searchResults })
